@@ -1,5 +1,5 @@
 /* Laboratorio RPG — Panel de ajustes, volumen, animaciones y pantalla completa */
-(function(){
+import { PUENTES } from './nucleo.js';
 const $=id=>document.getElementById(id),ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const set=$('xset'),scrim=$('xscrim'),menu=$('xmenu'),mus=$('xbgm');
 let ret=null;
@@ -40,4 +40,3 @@ function syncSet(){
 set.addEventListener('click',()=>setTimeout(syncSet,60));
 ['play','pause'].forEach(ev=>mus.addEventListener(ev,syncSet));
 syncSet();
-})();

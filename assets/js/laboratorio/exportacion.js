@@ -1,5 +1,5 @@
 /* Laboratorio RPG — Validador, paquete Unity v3, exportación y repeticiones */
-(function(){
+import { PUENTES } from './nucleo.js';
 const $=id=>document.getElementById(id);
 const dl=(n,t)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'application/json'}));a.download=n;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)};
 const fnv=t=>{let h=0x811c9dc5;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)}return(h>>>0).toString(16).padStart(8,'0')};
@@ -130,4 +130,5 @@ $('xrrun').onclick=()=>{try{const r=JSON.parse($('xrp').value),x=runReplay(r);
   const m=(x.ok?'Replay idéntico ✔':'Replay con diferencias ✖')+(x.mismosDatos?'':' (los datos cambiaron desde que se grabó)');
   $('xrres').textContent=m;lg(m,'t');toast(m)}catch(e){toast(e.message||'Replay no válido')}};
 window.rpgLab={validar,paquete,buildReplay,runReplay,datosHash};
-})();
+
+export {validar,paquete,buildReplay,runReplay,datosHash};

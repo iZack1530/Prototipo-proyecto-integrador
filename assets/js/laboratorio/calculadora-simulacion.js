@@ -1,5 +1,5 @@
 /* Laboratorio RPG — Calculadora de daño y simulación masiva */
-(function(){
+import { PUENTES } from './nucleo.js';
 const $=id=>document.getElementById(id);
 const opt=(v,l,sel)=>`<option value="${esc(v)}"${sel?' selected':''}>${esc(l)}</option>`;
 const chips=t=>(t||[]).map(x=>`<span class="chip" style="background:${tcol(x)}">${esc(x)}</span>`).join(' ');
@@ -199,6 +199,7 @@ function calcUI(){
 }
 calcUI();simUI();
 document.addEventListener('click',e=>{const b=e.target.closest('#xesb button');if(!b)return;document.querySelectorAll('#xesb button').forEach(x=>x.classList.toggle('on',x===b));$('xecalc').classList.toggle('hid',b.dataset.c!=='calc');$('xesim').classList.toggle('hid',b.dataset.c!=='sim')});
-window.eqRefresh=eqRefresh;try{eqRefresh()}catch(e){}
+PUENTES.eqRefresh=eqRefresh;try{eqRefresh()}catch(e){}
 Object.assign(window.rpgLab,{calcDano,simular,battle});
-})();
+
+export {calcDano,simular,battle,aiFn,mkR,eqRefresh};

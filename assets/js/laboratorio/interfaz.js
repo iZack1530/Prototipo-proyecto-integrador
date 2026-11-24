@@ -1,4 +1,7 @@
 /* Laboratorio RPG — Interfaz: formularios, eventos y paneles */
+import { PUENTES } from './nucleo.js';
+
+const $=id=>document.getElementById(id);
 
 /* ---------- Construcción de UI ---------- */
 function build(){
@@ -45,7 +48,7 @@ function status(c){
   if(!r.ok){if(!m){m=document.createElement('p');m.className='err bdc hint';ta.after(m)}m.textContent=r.err}else if(m)m.remove();
 }
 function totalE(){return STATS.reduce((a,s)=>a+(s.k==='mp'?0:+cur.ev[s.k]||0),0)}
-function refresh(){if(window.retRefresh)retRefresh();
+function refresh(){if(PUENTES.retRefresh)PUENTES.retRefresh();
   const N=cur.nivel;
   STATS.forEach(s=>{
     const B=+cur.base[s.k]||0,E=s.k==='mp'?0:(+cur.ev[s.k]||0),raw=calc(cur.f[s.k],B,N,E);
@@ -70,7 +73,7 @@ function refresh(){if(window.retRefresh)retRefresh();
 function renderList(){
   $('list').innerHTML=db.length?db.filter(c=>{const q=($('lq')||{value:''}).value.toLowerCase().trim();return !q||[c.nombre,c.especie,c.hab,...(c.tipos||[])].join(' ').toLowerCase().includes(q)}).map(c=>`<div class="card ${c.id===cur.id?'act':''}" draggable="true" data-id="${c.id}">${window.retHTML?retHTML(c,52):''}<b>${esc(c.nombre||'Sin nombre')}</b>
     <div class="sub">${esc(c.especie||'—')} · Nv ${c.nivel}</div>
-    <div>${c.tipos.map(t=>`<span class="chip" style="background:${tcol(t)}">${esc(t)}</span>`).join('')}</div>${window.defHTML?defHTML(c,true):''}
+    <div>${c.tipos.map(t=>`<span class="chip" style="background:${tcol(t)}">${esc(t)}</span>`).join('')}</div>${PUENTES.defHTML?PUENTES.defHTML(c,true):''}
     ${c.hab?`<div class="hint" style="margin-top:4px">Habilidad: ${esc(c.hab)}</div>`:''}
     <div class="row" style="margin-top:8px"><button class="sm pri" data-a="load" data-id="${c.id}">Cargar</button><button class="sm am" data-a="ficha" data-id="${c.id}">Ficha</button><button class="sm" data-a="up" data-id="${c.id}" aria-label="Subir">▲</button><button class="sm" data-a="dn" data-id="${c.id}" aria-label="Bajar">▼</button><button class="sm" data-a="dup" data-id="${c.id}">Duplicar</button><button class="sm danger" data-a="del" data-id="${c.id}">Eliminar</button></div></div>`).join('')
     :'<p class="hint">Aún no hay criaturas. Completa el editor y pulsa «Guardar».</p>';
@@ -477,7 +480,7 @@ function allInit(){
   $('xc').onclick=async()=>{if(!$('xj').value)$('xe').click();try{await navigator.clipboard.writeText($('xj').value);toast('Copiado')}catch(e){$('xj').select()}};
   const imp=t=>{try{const o=JSON.parse(t);if(!o||typeof o!=='object')throw 0;if(o.version>SCHEMA){toast('Este archivo es de una versión más nueva ('+o.version+')');return}Object.entries(ALLK).forEach(([n,k])=>{if(o[n]!=null)localStorage.setItem(k,JSON.stringify(o[n]))});toast('Importado: recargando…');setTimeout(()=>location.reload(),600)}catch(e){toast('JSON no válido')}};
   $('xi').onclick=()=>imp($('xj').value);
-  $('xdemo').onclick=e=>{const b=e.currentTarget;if(b.dataset.armed){imp(JSON.stringify(window.rpgDemo))}else{b.dataset.armed=1;b.textContent='¿Seguro? Sustituye tus datos';setTimeout(()=>{delete b.dataset.armed;b.textContent='Cargar datos de prueba'},2500)}};
+  $('xdemo').onclick=e=>{const b=e.currentTarget;if(b.dataset.armed){imp(JSON.stringify(PUENTES.demo))}else{b.dataset.armed=1;b.textContent='¿Seguro? Sustituye tus datos';setTimeout(()=>{delete b.dataset.armed;b.textContent='Cargar datos de prueba'},2500)}};
   $('xfile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{$('xj').value=r.result;imp(r.result)};r.readAsText(f);e.target.value=''};
   $('xr').onclick=e=>{const b=e.currentTarget;if(b.dataset.armed){Object.values(ALLK).forEach(k=>localStorage.removeItem(k));location.reload()}else{b.dataset.armed=1;b.textContent='¿Seguro? Borra todo';setTimeout(()=>{delete b.dataset.armed;b.textContent='Restablecer proyecto'},2500)}};
 }
@@ -514,3 +517,11 @@ function tabsInit(){cleanHP();
   {const f=$('f5form').parentNode,g=subInit('hb',b=>f.before(b),f,[$('f5form')],[$('f5form').nextElementSibling]);ed($('hl'),g);$('hq').addEventListener('input',listH)}
   go(Math.max(0,Math.min(7,i)));
 }
+
+PUENTES.renderList=renderList;
+PUENTES.fillForm=fillForm;
+PUENTES.refresh=refresh;
+PUENTES.saveRules=saveRules;
+PUENTES.rCons=rCons;
+PUENTES.rOfen=rOfen;
+export {renderList,fillForm,refresh,saveRules,rCons,rOfen};

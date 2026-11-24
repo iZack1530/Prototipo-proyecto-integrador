@@ -1,5 +1,5 @@
 /* Laboratorio RPG — Límites de estadísticas base */
-(function(){
+import { PUENTES } from './nucleo.js';
 const $=id=>document.getElementById(id);let last=0;
 const aviso=()=>{const t=Date.now();if(t-last>1500){last=t;toast(`Las estadísticas base deben estar entre ${BMIN} y ${BMAX} (total base de ${BMIN*STATS.length} a ${(BMAX*STATS.length).toLocaleString('es-MX')}).`)}};
 const clamp=v=>Math.min(BMAX,Math.max(BMIN,v));
@@ -14,4 +14,3 @@ document.addEventListener('change',e=>{
 $('save').addEventListener('click',()=>{if(normBase([cur])){fillForm();refresh();aviso()}},true);
 const n=normBase(db);if(n){persist();setTimeout(()=>toast(`Se ajustaron ${n} valores base de criaturas guardadas al rango ${BMIN}–${BMAX}.`),600)}
 window.rpgLab.normBase=normBase;
-})();

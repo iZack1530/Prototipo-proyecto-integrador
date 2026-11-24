@@ -1,5 +1,5 @@
 /* Efectos: el MP3 se descarga una vez con fetch(url).arrayBuffer(). */
-(function(){
+import { PUENTES } from './nucleo.js';
 const $=id=>document.getElementById(id),ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 let ctx=null,buf=null,on=ls.get('rpg_sfx')!=='off',voices=[],last=0;const btn=$('xsfx');
 const ui=()=>{btn.classList.toggle('off',!on);btn.setAttribute('aria-pressed',on);btn.title=on?'Silenciar efectos de sonido':'Activar efectos de sonido';btn.setAttribute('aria-label',btn.title)};
@@ -9,4 +9,3 @@ document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#xs
 document.addEventListener('change',e=>{if(e.target&&e.target.tagName==='SELECT')play()},true);
 btn.onclick=()=>{on=!on;ls.set('rpg_sfx',on?'on':'off');ui();if(on)play()};
 ui();init();window.rpgLab.sfx=()=>({on,listo:!!buf});
-})();

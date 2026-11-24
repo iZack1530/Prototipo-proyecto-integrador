@@ -1,5 +1,5 @@
 /* Laboratorio RPG — Ficha de criatura: radar, detalle y aprendizajes */
-(function(){
+import { PUENTES } from './nucleo.js';
 const $=id=>document.getElementById(id);
 let sel=null,sl=0;
 const statsOf=c=>{try{return mk(c,{pas:'',ofe:''},0).st}catch(e){const o={};STATS.forEach(s=>o[s.k]=1);return o}};
@@ -7,7 +7,7 @@ const sv=(c,k)=>{const v=calc(c.f[k],+(c.base||{})[k]||0,c.nivel,k==='mp'?0:(+(c
 const sp=(c,k)=>{const E=k==='mp'?0:(+(c.ev||{})[k]||0),raw=calc(c.f[k],+(c.base||{})[k]||0,c.nivel,E),ref=calc(c.f[k],255,c.nivel,k==='mp'?0:MAX_E);return ref>0&&isFinite(raw)?Math.max(0,Math.min(100,raw/ref*100)):0};
 const sums=c=>({fin:STATS.reduce((q,s)=>q+sv(c,s.k),0),base:STATS.reduce((q,s)=>q+(+(c.base||{})[s.k]||0),0)});
 const nf=n=>n.toLocaleString('es-MX');
-window.sumHTML=c=>{const t=sums(c),mx=BMAX*STATS.length,p=Math.min(100,t.base/mx*100),tr=tierOf(t.base/STATS.length);
+PUENTES.sumHTML=c=>{const t=sums(c),mx=BMAX*STATS.length,p=Math.min(100,t.base/mx*100),tr=tierOf(t.base/STATS.length);
   return`<b>Total base</b><span class="xn">${nf(t.base)}</span><span class="xm">de ${nf(mx)}</span><span class="chip" style="background:${tr[2]}">${tr[1]}</span><span class="xf">Total final ${nf(t.fin)}</span><div class="bar xb"><i style="width:${p.toFixed(1)}%;background:${tr[2]}"></i></div>`};
 function radar(c){
   const cx=180,cy=165,R=112,n=STATS.length;
@@ -70,4 +70,5 @@ $('xfsec').addEventListener('input',e=>{if(e.target.id!=='lrq')return;const q=e.
 $('list').addEventListener('click',e=>{const b=e.target.closest('[data-a="ficha"]');if(!b)return;sel=b.dataset.id;sl=0;show()});
 document.addEventListener('keydown',e=>{if(!$('xficha')||$('xficha').classList.contains('hid')||$('xfsec').closest('.hid'))return;if(/INPUT|SELECT|TEXTAREA/.test((e.target||{}).tagName))return;if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
 window.rpgLab.ficha={render,pick};
-})();
+
+export {render,pick};

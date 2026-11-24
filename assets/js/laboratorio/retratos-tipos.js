@@ -1,5 +1,5 @@
 /* Laboratorio RPG — Iconos de tipo, retratos y debilidades */
-(function(){
+import { PUENTES } from './nucleo.js';
 const $=id=>document.getElementById(id);
 /* ---- iconos de tipo (trazo, 24×24) ---- */
 const ICO={
@@ -37,7 +37,7 @@ function defHTML(c,compact){
   const h=row('Debilidad',g.d)+row('Tolerancia',g.r)+row('Inmune',g.i);
   return h?`<div class="df">${h}</div>`:''}
 /* ---- editor de retrato ---- */
-function retRefresh(){const v=$('xretv');if(!v||typeof cur==='undefined')return;v.innerHTML=retHTML(cur,112);$('xdef').innerHTML=defHTML(cur);if(window.sumHTML&&$('xsum'))$('xsum').innerHTML=sumHTML(cur)}
+function retRefresh(){const v=$('xretv');if(!v||typeof cur==='undefined')return;v.innerHTML=retHTML(cur,112);$('xdef').innerHTML=defHTML(cur);if(PUENTES.sumHTML&&$('xsum'))$('xsum').innerHTML=PUENTES.sumHTML(cur)}
 $('xretf').onchange=e=>{
   const f=e.target.files[0];if(!f)return;const fr=new FileReader();
   fr.onload=()=>{const img=new Image();img.onload=()=>{
@@ -50,7 +50,8 @@ $('xretq').onclick=()=>{delete cur.retrato;retRefresh()};
 /* ---- iconos automáticos en las etiquetas de tipo ---- */
 let q=0;const dec=()=>document.querySelectorAll('.chip:not([data-ti])').forEach(ch=>{const n=ch.textContent.trim();if(TIPOS.some(t=>t[0]===n))ch.insertAdjacentHTML('afterbegin',tIcon(n,13));ch.dataset.ti='1'});
 new MutationObserver(()=>{if(q)return;q=1;requestAnimationFrame(()=>{q=0;dec()})}).observe(document.body,{childList:true,subtree:true});
-Object.assign(window,{tIcon,retHTML,defHTML,retRefresh});
+Object.assign(PUENTES,{tIcon,retHTML,defHTML,retRefresh});
 dec();renderList();retRefresh();
 Object.assign(window.rpgLab,{tIcon,retHTML,defHTML});
-})();
+
+export {tIcon,retHTML,defHTML,retRefresh};

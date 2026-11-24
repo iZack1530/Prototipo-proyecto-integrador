@@ -1,5 +1,5 @@
 /* Laboratorio RPG — Asistente rápido de objetos y consumibles */
-(function(){
+import { PUENTES } from './nucleo.js';
 const $=id=>document.getElementById(id);
 const FP=[['atk','Ataque'],['def','Defensa'],['matk','Poder mágico'],['mdef','Def. mágica'],['spd','Velocidad'],['hp','Vida máx.']],FO=[['all','Todo el daño'],['fis','Daño físico'],['mag','Daño mágico']];
 const CT={hp:'Cura vida (% de la vida máx.)',mp:'Cura maná (% del maná máx.)',cura:'Cura el estado alterado'};
@@ -55,5 +55,6 @@ document.addEventListener('click',e=>{
   if(b.id==='xocancel'){ed=null;form()}
   if(b.id==='xoreset'){if(b.dataset.armed){const c=k=>JSON.parse(JSON.stringify(R0[k]));applyRules({pas:c('pas'),ofe:c('ofe'),bag:c('bag'),cons:c('cons')});['pas','ofe'].forEach(f=>{try{cfg.t.forEach(l=>l.forEach(x=>{if(x[f]&&!(f==='pas'?PAS:OFE)[x[f]])x[f]=''}))}catch(e){}});delete b.dataset.armed;b.textContent='Restablecer objetos predeterminados';persist('Objetos restablecidos')}else{b.dataset.armed=1;b.textContent='¿Seguro? Se perderán tus objetos';setTimeout(()=>{delete b.dataset.armed;b.textContent='Restablecer objetos predeterminados'},2500)}}
 });
-window.objRender=render;render();
-})();
+PUENTES.objRender=render;render();
+
+export {render};
