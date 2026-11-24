@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laboratorio RPG</title>
+<meta name="description" content="Laboratorio de diseño y pruebas para un RPG por turnos 3v3: criaturas, ataques, habilidades, tipos, simulador de combate y equilibrio.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23071a14'/%3E%3Cpath d='M32 8l20 12v24L32 56 12 44V20z' fill='none' stroke='%23e0a526' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%2322c55e'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/tema.css">
+<link rel="stylesheet" href="../assets/css/componentes.css">
+<script src="../assets/js/laboratorio/tema-inicial.js"></script>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rasgado" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="4" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="10" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+<header>
+  <h1>Laboratorio RPG</h1>
+  <nav id='nav' aria-label='Secciones'><button>1 · Criaturas</button><button>2 · Tipos</button><button>3 · Ataques</button><button>4 · Habilidades</button><button>5 · Objetos</button><button>6 · Combate</button><button>7 · Equilibrio</button><button>8 · Reglas</button></nav>
+</header>
+<main>
+<div>
+  <section>
+    <h2>Criatura</h2>
+    <div id="xret"><div id="xretv"></div><div style="flex:1;min-width:220px"><label for="xretf">Retrato (opcional: si no subes imagen se genera una estela con sus tipos)</label><input id="xretf" type="file" accept="image/*"><div class="row" style="margin-top:6px"><button id="xretq" class="sm" type="button">Quitar imagen</button></div><div id="xdef"></div></div></div>
+    <div class="grid g2">
+      <div><label for="nombre">Nombre</label><input id="nombre" maxlength="40"></div>
+      <div><label for="especie">Especie</label><input id="especie" maxlength="40"></div>
+      <div><label for="t1">Tipo principal</label><select id="t1"></select></div>
+      <div><label for="t2">Tipo secundario (opcional)</label><select id="t2"></select></div>
+      <div><label for="hab">Habilidad única (se crean en la sección Habilidades)</label><select id="hab"></select></div>
+      <div><label for="nivel">Nivel (1–100)</label><input id="nivel" type="number" min="1" max="100"></div>
+    </div>
+    <div style="margin-top:10px"><label for="habd">Descripción de la habilidad (ofensiva, defensiva, pasiva o única)</label><textarea id="habd" rows="2"></textarea></div>
+    <div style="margin-top:10px"><label>Ataques (5 obligatorios para combatir; solo podrá usar estos)</label><div id="mvs" class="gp"></div></div>
+  </section>
+
+  <section>
+    <h2>Estadísticas y entrenamiento</h2>
+    <div class="row" style="margin-bottom:8px">
+      <div style="width:190px"><label for="cap">Tope global de esfuerzo (≤ 500)</label><input id="cap" type="number" min="0" max="500"></div>
+      <p class="hint" style="flex:1;min-width:200px;margin:14px 0 0">Máximo 160 por stat. El Maná no admite esfuerzo. Pulsa una fila para ver su desglose.<br><b style="color:var(--oro)">Base de cada estadística: de 1 a 255</b> · total base de 7 a 1,785.</p>
+    </div>
+    <div id="xq" class="row" style="margin-bottom:10px"></div>
+    <div class="stat hint" style="border:0;padding:0"><span></span><span>Base (B)</span><span>Esfuerzo (E)</span><span></span></div>
+    <div id="stats"></div>
+    <div id="tot" class="tot"></div>
+    <div id="xsum" class="tot xsum"></div>
+  </section>
+
+  <section>
+    <h2>Fórmulas</h2>
+    <div id="forms"></div>
+  </section>
+</div>
+
+<div>
+  <section>
+    <h2>Criaturas guardadas</h2><input id="lq" placeholder="Buscar por nombre, especie, tipo o habilidad…" aria-label="Buscar criatura" style="margin-bottom:10px">
+    <div class="row" style="margin-bottom:10px">
+      <button class="pri" id="save">Guardar</button>
+      <button id="new">Nueva</button>
+    </div>
+    <div id="list"></div>
+  </section>
+  <section>
+    <h2>Respaldo JSON</h2>
+    <div class="row" style="margin-bottom:8px">
+      <button id="exp">Exportar catálogo</button>
+      <button id="imp" class="am">Importar texto</button>
+      <button id="cpy">Copiar</button>
+    </div>
+    <textarea id="json" rows="6" placeholder="Pulsa «Exportar» para ver el catálogo aquí, o pega un JSON y pulsa «Importar»."></textarea>
+    <div style="margin-top:8px"><label for="file">…o carga un archivo .json</label><input id="file" type="file" accept=".json,application/json"></div>
+  </section>
+</div>
+<div id="xficha" class="hid"><section id="xfsec"></section></div>
+</main>
+<div class="f2"><section id="fase2">
+<h2>Tabla de tipos</h2>
+<div class="row">
+  <button id="mreset" class="danger">Restablecer todo a ×1</button>
+  <button id="mord">Restablecer orden</button>
+  <input id="tn" placeholder="Nuevo tipo" maxlength="20" aria-label="Nombre del nuevo tipo" style="width:150px">
+  <input id="tc" type="color" value="#38bdf8" aria-label="Color del tipo" style="width:44px;padding:2px">
+  <button id="tadd" class="am">Añadir tipo</button>
+</div>
+<div class="row" style="margin-top:8px"><select id="xte" style="width:160px" aria-label="Tipo a editar"></select><input id="xtr" placeholder="Nuevo nombre" maxlength="20" style="width:150px" aria-label="Nuevo nombre"><input id="xtk" type="color" style="width:44px;padding:2px" aria-label="Color"><button id="xtapl">Renombrar / recolorear tipo</button></div>
+<p class="hint">Filas = atacante, columnas = defensor. Arrastra las cabeceras para reordenar (en ordenador). Los cambios se guardan solos.</p>
+<div class="lg"><span class="m2">×2 Súper eficaz</span><span class="m1">×1 Normal</span><span class="m05">×0.5 Poco eficaz</span><span class="m0">×0 Inmune</span></div>
+<div class="mxw" id="mx"></div>
+<h3>Consultor defensivo</h3>
+<div class="grid g3"><div><label for="xcp">Tipo primario</label><select id="xcp"></select></div><div><label for="xcs">Tipo secundario</label><select id="xcs"></select></div><div><label for="xch">Habilidad (inmunidades y resistencias por tipo)</label><select id="xch"></select></div></div>
+<div id="xcres"></div>
+<h3>Cobertura ofensiva</h3>
+<p class="hint">Selecciona tipos atacantes: contra cada defensor se usa el multiplicador más alto.</p>
+<div id="xochips" class="row" style="margin-bottom:8px"></div><div id="xores"></div>
+</section></div>
+<div class='f2'><section id='fase3'>
+<h2>Catálogo de ataques</h2>
+<div class='f3'>
+<div id='f3form'>
+<div class='grid g2'>
+<div><label for='an'>Nombre del ataque</label><input id='an' maxlength='40'></div>
+<div><label for='at'>Tipo elemental</label><select id='at'></select></div>
+<div><label for='amp'>Consumo de maná (MP)</label><input id='amp' type='number' min='0'></div>
+<div><label for='apr'>Prioridad del ataque (−3 a +3)</label><input id='apr' type='number' min='-3' max='3' step='1'></div>
+<div><label for='acr'>Índice de golpe crítico</label><select id='acr'><option value='bajo'>Bajo (5%)</option><option value='medio'>Medio (7,5%)</option><option value='alto'>Alto (12,5%)</option></select></div>
+<div><label for='ac'>Categoría</label><select id='ac'><option value='fis'>Daño Físico (ATK vs DEF)</option><option value='mag'>Daño Mágico (MATK vs MDEF)</option><option value='est'>Estado (sin daño)</option></select></div>
+<div id='rpot'><label for='ap'>Potencia base</label><input id='ap' type='number' min='1'></div>
+<div><label for='aa'>Alcance</label><select id='aa'><option value='uni'>Objetivo único</option><option value='area'>Área (3 enemigos)</option></select></div>
+<div id='raoe'><label for='aaoe'>Daño por objetivo con 2+ alcanzados (%)</label><input id='aaoe' type='number' min='1' max='100'></div>
+</div>
+<div id='rcon' style='margin:6px 0'><label style='display:flex;gap:8px;align-items:center;color:var(--tx);font-size:.9rem'><input type='checkbox' id='acon' style='width:auto'> Ataque por contacto (activa las habilidades de contacto del rival)</label></div>
+<div id='rreb' class='fx'><div class='gp'>
+<div><label for='rbn'>Daño de rebote</label><select id='rbn'><option value='0'>Sin rebote</option><option value='1'>1 objetivo extra</option><option value='2'>2 objetivos extra</option></select></div>
+<div id='rb1w'><label for='rb1'>1.er rebote (%)</label><input id='rb1' type='number' min='1' max='100'></div>
+<div id='rb2w'><label for='rb2'>2.º rebote (%)</label><input id='rb2' type='number' min='1' max='100'></div>
+</div></div>
+<div style='margin-top:10px'><label for='ad'>Descripción</label><textarea id='ad' rows='2'></textarea></div>
+<h3>Efectos secundarios</h3>
+<div class='row'><select id='fxk' style='width:auto;flex:1'></select><button id='fxadd' class='am'>Añadir efecto</button></div>
+<div id='fxl'></div>
+<div class='row' style='margin-top:12px'><button id='a3save' class='pri'>Guardar ataque</button><button id='a3new'>Nuevo</button></div>
+</div>
+<div>
+<h3 style='margin-top:0'>Catálogo</h3>
+<div class='grid g2' style='margin-bottom:10px'>
+<input id='fq' placeholder='Buscar…' aria-label='Buscar ataque'>
+<select id='fc' aria-label='Categoría'><option value=''>Todas las categorías</option><option value='fis'>Físico</option><option value='mag'>Mágico</option><option value='est'>Estado</option></select>
+<select id='ft' aria-label='Tipo'></select>
+<select id='fa' aria-label='Alcance'><option value=''>Cualquier alcance</option><option value='uni'>Único</option><option value='area'>Área</option></select>
+</div>
+<div id='l3'></div>
+<h3>Respaldo JSON</h3>
+<div class='row' style='margin-bottom:8px'><button id='e3'>Exportar</button><button id='i3' class='am'>Importar texto</button><button id='c3'>Copiar</button></div>
+<textarea id='j3' rows='5' placeholder='Pulsa «Exportar» o pega aquí un JSON y pulsa «Importar texto».'></textarea>
+<div style='margin-top:8px'><label for='f3file'>…o carga un archivo .json</label><input id='f3file' type='file' accept='.json,application/json'></div>
+</div>
+</div>
+</section></div>
+<div class='f2'><section id='fase7'>
+<h2>Objetos</h2>
+<p class='hint'>Catálogo único de objetos. En el simulador, los pasivos y ofensivos se equipan a cada criatura y los consumibles viven en la mochila de cada jugador. Todo es editable y se guarda solo.</p>
+<div class='sb' id='xosb'><button data-c='act' class='on'>Activos</button><button data-c='pas'>Pasivos</button></div>
+<div id='xolist'></div><div id='xoform'></div>
+<div class='row' style='margin-top:16px'><button id='xoreset' class='danger'>Restablecer objetos predeterminados</button></div>
+</section></div>
+<div class='f2'><section id='fase4'>
+<h2>Simulador de combate 3v3</h2>
+<div id='setup4'>
+<div class='row' style='margin-bottom:10px'><div style='width:230px'><label for='w4'>Clima inicial</label><select id='w4'></select></div><div style='width:190px'><label for='xseed'>Semilla (vacía = aleatoria)</label><input id='xseed' maxlength='40' placeholder='ej. 1234'></div><button id='xseedr' title='Semilla aleatoria' aria-label='Semilla aleatoria'><i class='ic ic-dado' style='margin:0'></i></button><button id='r4'>Actualizar criaturas</button><button id='go4' class='pri'>Iniciar combate</button></div>
+<div class='row' style='margin-bottom:10px'><div style='flex:1;min-width:170px'><label for='pn0'>Nombre del Jugador 1</label><input id='pn0' maxlength='20' placeholder='Jugador 1'></div><div style='flex:1;min-width:170px'><label for='pn1'>Nombre del Jugador 2</label><input id='pn1' maxlength='20' placeholder='Jugador 2'></div><div style='width:250px'><label for='vs4'>Modo</label><select id='vs4'><option value='pvp'>Dos jugadores</option><option value='cpu'>Jugador 1 contra la máquina</option></select></div><div id='polw' style='width:260px' class='hid'><label for='pol4'>Estrategia de la máquina</label><select id='pol4'><option value='in'>Inteligente</option><option value='gr'>Voraz</option><option value='al'>Aleatoria</option></select></div></div>
+<p class='hint'>Elige hasta 6 criaturas por jugador; las 3 primeras salen al campo. Cada una lleva un objeto pasivo y uno ofensivo. Las criaturas y ataques vienen de las fases 1 y 3.</p>
+<div class='arena' id='sl4'></div>
+<h3>Equipos guardados</h3>
+<p class='hint'>Guarda la formación de un jugador (criaturas, objetos y ataques elegidos) con un nombre y cárgala después en cualquiera de los dos lados.</p>
+<div class='row' style='margin-bottom:8px'><input id='eqn' placeholder='Nombre del equipo' maxlength='40' style='flex:1;min-width:180px'><button id='eqs0'>Guardar Jugador 1</button><button id='eqs1'>Guardar Jugador 2</button></div><div id='eql'></div>
+<h3>Combates guardados</h3><div id='cbl'></div>
+<h3>Configuración JSON</h3>
+<div class='row' style='margin-bottom:8px'><button id='e4'>Exportar</button><button id='i4' class='am'>Importar texto</button><button id='c4'>Copiar</button></div>
+<textarea id='j4' rows='4' placeholder='Pulsa «Exportar» o pega aquí una configuración y pulsa «Importar texto».'></textarea>
+<div style='margin-top:8px'><label for='f4file'>…o carga un archivo .json</label><input id='f4file' type='file' accept='.json,application/json'></div>
+<h3>Replay y pruebas de regresión</h3>
+<p class='hint'>Un replay guarda la semilla, los equipos y las acciones de cada turno. Reproducirlo debe dar exactamente el mismo resultado: sirve para comprobar que editar datos no rompió nada y, más adelante, que la versión de C# coincide.</p>
+<textarea id='xrp' rows='4' placeholder='Termina un combate y pulsa «Copiar replay», o pega aquí un replay.'></textarea>
+<div class='row' style='margin-top:8px'><button id='xrrun' class='am'>Reproducir replay</button></div><div id='xrres' class='hint'></div>
+</div>
+<div id='bt4' class='hid'>
+<div class='row' style='margin-bottom:10px'><div style='width:230px'><label for='w4b'>Clima activo</label><select id='w4b'></select></div><div style='width:170px'><label for='vel4'>Velocidad de animación</label><select id='vel4'><option value='lento'>Lenta</option><option value='normal'>Normal</option><option value='rapido'>Rápida</option><option value='ins'>Instantánea</option></select></div><button id='run4' class='am'>Ejecutar turno</button><span id='tmr4' class='hint' aria-live='off'></span><button id='auto4' title='La IA inteligente juega por ti hasta que caiga una criatura'>Avanzar hasta un KO</button><button id='undo4' title='Vuelve al inicio del último turno para elegir otras órdenes'>Deshacer turno</button><label class='stp'><input type='checkbox' id='step4'> Paso a paso</label><button id='next4' class='am hid'>Siguiente ▸</button><button id='end4'>Terminar combate</button><button id='xrcp'>Copiar replay</button></div><div class='row' style='margin-bottom:10px'><input id='svn' placeholder='Nombre para guardar este combate' maxlength='40' style='flex:1;min-width:200px'><button id='sv4'>Guardar combate</button></div>
+<div id='arv' class='arv'><div class='ars j1'><h4 id='an0'>Jugador 1</h4><div id='sl0' class='asl'></div><div id='bn0' class='abn'></div></div><div id='arc' class='arc'></div><div class='ars j2'><h4 id='an1'>Jugador 2</h4><div id='sl1' class='asl'></div><div id='bn1' class='abn'></div></div></div>
+<div class='msgw'><div id='msg4' class='msg'></div><button id='skip4' class='sm hid'>Saltar</button></div>
+<div id='ordbar' class='ordb'></div>
+<div id='ords4'><div class='arena'><div id='ar0'></div><div id='ar1'></div></div></div>
+<details id='insp' style='margin-top:10px'><summary>Inspector de cálculo</summary><div class='row' style='margin:8px 0'><div style='width:220px'><label for='insf'>Mostrar</label><select id='insf'><option value='last'>Último turno</option><option value='all'>Todos los turnos</option></select></div></div><div id='insl'></div></details>
+<div id='intro4'></div>
+<div id='fin4' class='fin hid'><div class='fbox'><h2 id='fin4t'></h2><p id='fin4s' class='hint'></p><div class='row' style='justify-content:center;margin-top:14px'><button id='fin4c'>Ver arena</button><button id='fin4e' class='am'>Terminar combate</button></div></div></div>
+<details style='margin-top:10px'><summary>Registro detallado</summary><div id='lg4' class='log'></div></details>
+</div>
+</section></div>
+<div class='f2'><section id='fase5'>
+<h2>Habilidades</h2>
+<div class='f3'>
+<div id='f5form'>
+<div class='grid g2'>
+<div><label for='hn'>Nombre de la habilidad</label><input id='hn' maxlength='40'></div>
+<div><label for='hd'>Descripción (opcional; si la dejas vacía se genera sola)</label><input id='hd' maxlength='160'></div>
+</div>
+<h3>Efectos</h3>
+<div class='row'><select id='hk' style='width:auto;flex:1'></select><button id='hadd' class='am'>Añadir efecto</button></div>
+<div id='hfl'></div>
+<div class='row' style='margin-top:12px'><button id='hsave' class='pri'>Guardar habilidad</button><button id='hnew'>Nueva</button></div>
+</div>
+<div>
+<h3 style='margin-top:0'>Catálogo</h3>
+<input id='hq' placeholder='Buscar habilidad…' aria-label='Buscar habilidad' style='margin-bottom:10px'><div id='hl'></div>
+<h3>Respaldo JSON</h3>
+<div class='row' style='margin-bottom:8px'><button id='he'>Exportar</button><button id='hi' class='am'>Importar texto</button><button id='hc'>Copiar</button></div>
+<textarea id='hj' rows='4' placeholder='Pulsa «Exportar» o pega aquí un JSON y pulsa «Importar texto».'></textarea>
+<div style='margin-top:8px'><label for='hfile'>…o carga un archivo .json</label><input id='hfile' type='file' accept='.json,application/json'></div>
+</div>
+</div>
+</section></div>
+<div class='f2'><section id='fase8'>
+<h2>Equilibrio</h2>
+<p class='hint'>Herramientas para equilibrar el juego con exactamente las mismas reglas del simulador de combate.</p>
+<div class='sb' id='xesb'><button data-c='calc' class='on'>Calculadora de daño</button><button data-c='sim'>Simulación masiva</button></div>
+<div id='xecalc'></div><div id='xesim' class='hid'></div>
+</section></div>
+<div class='f2'><section id='fase6'>
+<h2>Reglas del juego y proyecto</h2>
+<p class='hint'>Climas, estados, objetos, mochila, rangos, límites y fórmulas por defecto son datos editables (JSON validado). Los cambios se guardan solos y afectan a todo el laboratorio.</p>
+<div id='xrules'></div>
+<h3>Validador de datos</h3>
+<p class='hint'>Revisa referencias rotas, duplicados, fórmulas inválidas y datos incompletos en todo el proyecto.</p>
+<div class='row' style='margin-bottom:8px'><button id='xvr' class='pri'>Validar todo</button><span id='xvs' class='hint'></span></div><div id='xvl'></div>
+<h3>Proyecto completo</h3>
+<div class='row' style='margin-bottom:8px'><button id='xe'>Exportar todo</button><button id='xu' class='am'>Exportar para Unity (v3)</button><button id='xc'>Copiar</button><button id='xi' class='am'>Importar todo</button><button id='xdemo' class='am' title='Sustituye criaturas, ataques y habilidades por un conjunto de pruebas'>Cargar datos de prueba</button><button id='xr' class='danger'>Restablecer proyecto</button></div>
+<textarea id='xj' rows='6' placeholder='Exporta criaturas, ataques, habilidades, tipos, reglas y configuración de combate en un solo JSON.'></textarea>
+<div style='margin-top:8px'><label for='xfile'>…o carga un archivo .json</label><input id='xfile' type='file' accept='.json,application/json'></div>
+</section></div>
+<div id="xfab"><button id="xmenu" class="hexb" type="button" aria-label="Ajustes" aria-haspopup="dialog" aria-expanded="false" title="Ajustes"><i class="ic ic-menu"></i></button></div>
+<div id="xscrim"></div>
+<aside id="xset" role="dialog" aria-modal="true" aria-labelledby="xsett"><div class="xsin">
+<div class="xsh"><h2 id="xsett">Ajustes</h2><button id="xsx" class="hexb sm" type="button" aria-label="Cerrar ajustes"><i class="ic ic-x"></i></button></div>
+<div class="srow"><div class="sl"><b>Tema</b><small id="xz_t"></small></div><button id="xtema" class="hexb" type="button" aria-label="Cambiar tema"></button></div>
+<div class="srow"><div class="sl"><b>Música</b><small id="xz_m"></small><input type="range" id="xv_m" min="0" max="100" aria-label="Volumen de la música"></div><button id="xmus" class="hexb" type="button" aria-pressed="false" aria-label="Música"><i class="ic ic-nota"></i></button></div>
+<div class="srow"><div class="sl"><b>Efectos de sonido</b><small id="xz_s"></small><input type="range" id="xv_s" min="0" max="100" aria-label="Volumen de los efectos"></div><button id="xsfx" class="hexb" type="button" aria-pressed="true" aria-label="Efectos de sonido"><i class="ic ic-vol"></i></button></div>
+<div class="srow"><div class="sl"><b>Reducir animaciones</b><small id="xz_a"></small></div><button id="xan" class="hexb" type="button" aria-pressed="false" aria-label="Reducir animaciones"><i class="ic ic-pausa"></i></button></div>
+<div class="srow"><div class="sl"><b>Pantalla completa</b><small id="xz_f"></small></div><button id="xfs" class="hexb" type="button" aria-pressed="false" aria-label="Pantalla completa"><i class="ic ic-full"></i></button></div>
+<p class="xsnota">Los ajustes se guardan en este navegador. Pulsa Esc para cerrar.</p>
+</div></aside>
+<audio id="xbgm" loop preload="auto"></audio>
+<div id="toast" role="status"></div>
+
+<script src="../assets/js/laboratorio/motor.js"></script>
+<script type="text/plain" id="xdemo_d">{"version":5,"criaturas":[{"id":"c_tonatiuh","nombre":"Tonatiuh","especie":"Ave solar","tipos":["Fuego","Viento"],"hab":"Llama interior","habId":"h_llama","habd":"Fuego ×1.2.","atk":["a_llamarada","a_colmillo","a_danza","a_rafaga","a_golpe"],"nivel":50,"learn":["a_tornado","a_fuegofatuo","a_relampago","a_azote"],"cap":480,"base":{"hp":80,"mp":70,"atk":80,"def":65,"matk":100,"mdef":70,"spd":95},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_quetzal","nombre":"Quetzalín","especie":"Ave plumada","tipos":["Viento","Sagrado"],"hab":"Veloz","habId":"h_velo","habd":"Prioridad +1.","atk":["a_rafaga","a_luz","a_aliento","a_velo","a_giro"],"nivel":50,"learn":["a_tornado","a_himno","a_succion","a_barrera"],"cap":480,"base":{"hp":75,"mp":80,"atk":70,"def":70,"matk":95,"mdef":85,"spd":110},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_ahuizotl","nombre":"Ahuizotl","especie":"Nutria acuática","tipos":["Agua","Oscuro"],"hab":"Red pegajosa","habId":"h_trampa","habd":"Atrapa al rival al entrar.","atk":["a_chorro","a_burbuja","a_mordisco","a_marea","a_rugido"],"nivel":50,"learn":["a_pesadilla","a_vaciar","a_maldicion","a_golpe"],"cap":480,"base":{"hp":90,"mp":75,"atk":85,"def":80,"matk":90,"mdef":80,"spd":70},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_ceiba","nombre":"Ceibón","especie":"Árbol guardián","tipos":["Planta","Tierra"],"hab":"Espinas","habId":"h_espinas","habd":"Refleja 25% del daño físico.","atk":["a_latigo","a_drenaje","a_raices","a_muro","a_esporas"],"nivel":50,"learn":["a_hojas","a_terremoto","a_sinergia","a_lento"],"cap":480,"base":{"hp":120,"mp":60,"atk":90,"def":110,"matk":70,"mdef":90,"spd":40},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_tlaloc","nombre":"Tlalocán","especie":"Nube viva","tipos":["Eléctrico","Agua"],"hab":"Flotación","habId":"h_flotar","habd":"Inmune a Tierra.","atk":["a_rayo","a_chispa","a_carga","a_chorro","a_velo"],"nivel":50,"learn":["a_marea","a_tornado","a_lentitud","a_relampago"],"cap":480,"base":{"hp":70,"mp":90,"atk":60,"def":65,"matk":115,"mdef":90,"spd":100},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_itzcuintli","nombre":"Itzcuintli","especie":"Can espectral","tipos":["Oscuro","Neutro"],"hab":"Intimidación","habId":"h_intim","habd":"Al entrar baja el ATK rival.","atk":["a_mordisco","a_desgarro","a_rugido","a_pesadilla","a_golpe"],"nivel":50,"learn":["a_herida","a_azote","a_vaciar","a_relampago"],"cap":480,"base":{"hp":85,"mp":65,"atk":105,"def":75,"matk":70,"mdef":70,"spd":95},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_tepeyolot","nombre":"Tepeyolotl","especie":"Jaguar de roca","tipos":["Roca","Tierra"],"hab":"Furia","habId":"h_furia","habd":"Con poca vida sube ATK.","atk":["a_pedrada","a_terremoto","a_coraza","a_alud","a_golpe"],"nivel":50,"learn":["a_lento","a_muro","a_azote","a_relampago"],"cap":480,"base":{"hp":100,"mp":55,"atk":115,"def":100,"matk":55,"mdef":65,"spd":60},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_ixtli","nombre":"Ixtlimetal","especie":"Autómata de obsidiana","tipos":["Metal","Roca"],"hab":"Piel ígnea","habId":"h_piel","habd":"Resiste Hielo.","atk":["a_acero","a_garra","a_extremo","a_coraza","a_pedrada"],"nivel":50,"learn":["a_alud","a_muro","a_giro","a_golpe"],"cap":480,"base":{"hp":95,"mp":60,"atk":100,"def":120,"matk":60,"mdef":90,"spd":50},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_mictlan","nombre":"Mictlani","especie":"Mariposa nocturna","tipos":["Tóxico","Oscuro"],"hab":"Piel tóxica","habId":"h_toxica","habd":"30% de intoxicar al golpear por contacto.","atk":["a_dardo","a_niebla","a_corrosion","a_pesadilla","a_retirada"],"nivel":50,"learn":["a_mordisco","a_maldicion","a_vaciar","a_golpe"],"cap":480,"base":{"hp":70,"mp":85,"atk":65,"def":70,"matk":100,"mdef":85,"spd":90},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_itztli","nombre":"Itztli","especie":"Zorro de hielo","tipos":["Hielo","Viento"],"hab":"Piel ígnea","habId":"h_piel","habd":"Resiste Hielo.","atk":["a_ventisca","a_lanza","a_escarcha","a_lentitud","a_giro"],"nivel":50,"learn":["a_rafaga","a_tornado","a_aliento","a_relampago"],"cap":480,"base":{"hp":75,"mp":75,"atk":85,"def":70,"matk":95,"mdef":75,"spd":105},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_xochi","nombre":"Xochitl","especie":"Flor sanadora","tipos":["Planta","Sagrado"],"hab":"Sin habilidad útil","habId":"h_nada","habd":"Para comparar.","atk":["a_drenaje","a_luz","a_himno","a_barrera","a_succion"],"nivel":50,"learn":["a_esporas","a_hojas","a_sinergia","a_raices"],"cap":480,"base":{"hp":100,"mp":95,"atk":55,"def":85,"matk":100,"mdef":110,"spd":60},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true},{"id":"c_neutro","nombre":"Tlacuache","especie":"Marsupial común","tipos":["Neutro"],"hab":"Sin habilidad útil","habId":"h_nada","habd":"Para comparar.","atk":["a_golpe","a_azote","a_desgarro","a_relampago","a_herida"],"nivel":50,"learn":["a_chispa","a_colmillo","a_garra","a_chorro"],"cap":480,"base":{"hp":90,"mp":70,"atk":80,"def":80,"matk":80,"mdef":80,"spd":80},"ev":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0},"f":{"hp":"((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)","mp":"B + N * 2 + 50","atk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","def":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","matk":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","mdef":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N","spd":"[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"},"sync":true}],"ataques":[{"id":"a_llamarada","crit":"medio","nombre":"Llamarada","desc":"","tipo":"Fuego","mp":20,"cat":"mag","pot":90,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_colmillo","crit":"medio","nombre":"Colmillo ígneo","desc":"","tipo":"Fuego","mp":12,"cat":"fis","pot":65,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":true,"fx":[{"k":"status","p":30,"e":"Quemadura"}]},{"id":"a_latigo","crit":"bajo","nombre":"Latigazo","desc":"","tipo":"Planta","mp":12,"cat":"fis","pot":70,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":true,"fx":[]},{"id":"a_drenaje","crit":"bajo","nombre":"Drenaje vital","desc":"","tipo":"Planta","mp":14,"cat":"mag","pot":60,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"lifesteal","p":100,"v":50}]},{"id":"a_hojas","crit":"bajo","nombre":"Lluvia de hojas","desc":"","tipo":"Planta","mp":18,"cat":"mag","pot":55,"alc":"area","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_chorro","crit":"bajo","nombre":"Chorro","desc":"","tipo":"Agua","mp":12,"cat":"mag","pot":70,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_marea","crit":"bajo","nombre":"Marea","desc":"","tipo":"Agua","mp":22,"cat":"mag","pot":70,"alc":"area","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_rafaga","crit":"bajo","nombre":"Ráfaga","desc":"","tipo":"Viento","mp":8,"cat":"mag","pot":60,"alc":"uni","aoe":75,"reb":[],"prio":1,"con":false,"fx":[]},{"id":"a_tornado","crit":"bajo","nombre":"Tornado","desc":"","tipo":"Viento","mp":18,"cat":"mag","pot":65,"alc":"area","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_ventisca","crit":"bajo","nombre":"Ventisca","desc":"","tipo":"Hielo","mp":24,"cat":"mag","pot":80,"alc":"area","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":20,"e":"Congelación"}]},{"id":"a_lanza","crit":"alto","nombre":"Lanza helada","desc":"","tipo":"Hielo","mp":14,"cat":"fis","pot":75,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_terremoto","crit":"bajo","nombre":"Terremoto","desc":"","tipo":"Tierra","mp":24,"cat":"fis","pot":85,"alc":"area","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_rayo","crit":"medio","nombre":"Rayo","desc":"","tipo":"Eléctrico","mp":16,"cat":"mag","pot":80,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":30,"e":"Parálisis"}]},{"id":"a_chispa","crit":"alto","nombre":"Chispa","desc":"","tipo":"Eléctrico","mp":6,"cat":"fis","pot":40,"alc":"uni","aoe":75,"reb":[],"prio":1,"con":true,"fx":[]},{"id":"a_pedrada","crit":"medio","nombre":"Pedrada","desc":"","tipo":"Roca","mp":14,"cat":"fis","pot":80,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_alud","crit":"bajo","nombre":"Alud","desc":"","tipo":"Roca","mp":20,"cat":"fis","pot":70,"alc":"area","aoe":75,"reb":[],"prio":0,"con":false,"fx":[]},{"id":"a_dardo","crit":"alto","nombre":"Dardo venenoso","desc":"","tipo":"Tóxico","mp":8,"cat":"fis","pot":45,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":true,"fx":[{"k":"status","p":100,"e":"Intoxicación"}]},{"id":"a_garra","crit":"alto","nombre":"Garra metálica","desc":"","tipo":"Metal","mp":12,"cat":"fis","pot":70,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":true,"fx":[{"k":"boost","p":20,"t":"user","s":"ATK","n":1}]},{"id":"a_acero","crit":"bajo","nombre":"Golpe de acero","desc":"","tipo":"Metal","mp":20,"cat":"fis","pot":95,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"recoil","p":100,"b":"dmg","v":25}]},{"id":"a_mordisco","crit":"medio","nombre":"Mordisco sombrío","desc":"","tipo":"Oscuro","mp":12,"cat":"fis","pot":70,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":true,"fx":[{"k":"mpsteal","p":100,"m":"dmg","v":30,"c":20}]},{"id":"a_pesadilla","crit":"bajo","nombre":"Pesadilla","desc":"","tipo":"Oscuro","mp":14,"cat":"mag","pot":65,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":40,"e":"Maldición"}]},{"id":"a_luz","crit":"medio","nombre":"Rayo sagrado","desc":"","tipo":"Sagrado","mp":16,"cat":"mag","pot":75,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"lifesteal","p":100,"v":25}]},{"id":"a_golpe","crit":"bajo","nombre":"Golpe certero","desc":"","tipo":"Neutro","mp":6,"cat":"fis","pot":60,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":true,"fx":[]},{"id":"a_azote","crit":"bajo","nombre":"Azote","desc":"","tipo":"Neutro","mp":22,"cat":"fis","pot":100,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"recoil","p":100,"b":"hp","v":15}]},{"id":"a_desgarro","crit":"alto","nombre":"Desgarro","desc":"","tipo":"Neutro","mp":10,"cat":"fis","pot":55,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":true,"fx":[{"k":"status","p":50,"e":"Sangrado"}]},{"id":"a_giro","crit":"medio","nombre":"Giro veloz","desc":"","tipo":"Viento","mp":10,"cat":"fis","pot":50,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":true,"fx":[{"k":"pivot","p":100,"keep":"1"}]},{"id":"a_retirada","crit":"bajo","nombre":"Retirada táctica","desc":"","tipo":"Oscuro","mp":10,"cat":"mag","pot":40,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"pivot","p":100,"keep":"0"}]},{"id":"a_burbuja","crit":"bajo","nombre":"Burbuja trampa","desc":"","tipo":"Agua","mp":14,"cat":"mag","pot":40,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"trap","p":100,"turns":3}]},{"id":"a_raices","crit":"bajo","nombre":"Raíces atrapantes","desc":"","tipo":"Planta","mp":12,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"trap","p":100,"turns":4}]},{"id":"a_danza","crit":"bajo","nombre":"Danza de fuego","desc":"","tipo":"Fuego","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"user","s":"ATK","n":2},{"k":"boost","p":100,"t":"user","s":"SPD","n":1}]},{"id":"a_carga","crit":"bajo","nombre":"Carga","desc":"","tipo":"Eléctrico","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"user","s":"MATK","n":2},{"k":"boost","p":100,"t":"user","s":"SPD","n":1}]},{"id":"a_coraza","crit":"bajo","nombre":"Coraza pétrea","desc":"","tipo":"Roca","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"user","s":"DEF","n":2},{"k":"boost","p":100,"t":"user","s":"MDEF","n":2}]},{"id":"a_rugido","crit":"bajo","nombre":"Rugido intimidante","desc":"","tipo":"Oscuro","mp":8,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"rival","s":"ATK","n":-2},{"k":"boost","p":100,"t":"rival","s":"MATK","n":-1}]},{"id":"a_corrosion","crit":"bajo","nombre":"Veneno corrosivo","desc":"","tipo":"Tóxico","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"rival","s":"DEF","n":-2},{"k":"boost","p":100,"t":"rival","s":"MDEF","n":-2}]},{"id":"a_himno","crit":"bajo","nombre":"Himno solar","desc":"","tipo":"Sagrado","mp":14,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"team","s":"ATK","n":1},{"k":"boost","p":100,"t":"team","s":"MATK","n":1}]},{"id":"a_aliento","crit":"bajo","nombre":"Aliento aliado","desc":"","tipo":"Viento","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"allies","s":"SPD","n":2}]},{"id":"a_sinergia","crit":"bajo","nombre":"Sinergia","desc":"","tipo":"Planta","mp":12,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"ua","s":"DEF","n":1},{"k":"boost","p":100,"t":"ua","s":"MDEF","n":1}]},{"id":"a_lentitud","crit":"bajo","nombre":"Viento helado","desc":"","tipo":"Hielo","mp":8,"cat":"est","pot":0,"alc":"area","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"rival","s":"SPD","n":-2}]},{"id":"a_extremo","crit":"bajo","nombre":"Frenesí extremo","desc":"","tipo":"Metal","mp":16,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"boost","p":100,"t":"user","s":"ATK","n":4},{"k":"boost","p":100,"t":"user","s":"DEF","n":-2}]},{"id":"a_esporas","crit":"bajo","nombre":"Esporas","desc":"","tipo":"Planta","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":100,"e":"Parálisis"}]},{"id":"a_niebla","crit":"bajo","nombre":"Niebla tóxica","desc":"","tipo":"Tóxico","mp":14,"cat":"est","pot":0,"alc":"area","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":100,"e":"Intoxicación"}]},{"id":"a_fuegofatuo","crit":"bajo","nombre":"Fuego fatuo","desc":"","tipo":"Fuego","mp":8,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":100,"e":"Quemadura"}]},{"id":"a_escarcha","crit":"bajo","nombre":"Beso gélido","desc":"","tipo":"Hielo","mp":12,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":100,"e":"Congelación"}]},{"id":"a_maldicion","crit":"bajo","nombre":"Mal de ojo","desc":"","tipo":"Oscuro","mp":12,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":100,"e":"Maldición"}]},{"id":"a_herida","crit":"bajo","nombre":"Tajo abierto","desc":"","tipo":"Neutro","mp":8,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"status","p":100,"e":"Sangrado"}]},{"id":"a_succion","crit":"bajo","nombre":"Succión de maná","desc":"","tipo":"Sagrado","mp":6,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"mpsteal","p":100,"m":"fijo","v":25}]},{"id":"a_vaciar","crit":"bajo","nombre":"Vaciar espíritu","desc":"","tipo":"Oscuro","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"mpsteal","p":100,"m":"pct","v":40}]},{"id":"a_barrera","crit":"bajo","nombre":"Barrera sagrada","desc":"","tipo":"Sagrado","mp":14,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"guard","p":100,"t":"team","v":30,"d":"all"}]},{"id":"a_muro","crit":"bajo","nombre":"Muro de barro","desc":"","tipo":"Tierra","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"guard","p":100,"t":"one","v":50,"d":"fis"}]},{"id":"a_velo","crit":"bajo","nombre":"Velo mágico","desc":"","tipo":"Viento","mp":10,"cat":"est","pot":0,"alc":"uni","aoe":75,"reb":[],"prio":0,"con":false,"fx":[{"k":"guard","p":100,"t":"team","v":40,"d":"mag"}]},{"id":"a_relampago","crit":"medio","nombre":"Golpe relámpago","desc":"","tipo":"Neutro","mp":8,"cat":"fis","pot":45,"alc":"uni","aoe":75,"reb":[],"prio":2,"con":true,"fx":[]},{"id":"a_lento","crit":"bajo","nombre":"Aplastamiento","desc":"","tipo":"Tierra","mp":24,"cat":"fis","pot":110,"alc":"uni","aoe":75,"reb":[],"prio":-1,"con":false,"fx":[]}],"habilidades":[{"id":"h_flotar","nombre":"Flotación","desc":"Inmune a Tierra.","fx":[{"k":"imm","tipo":"Tierra"}]},{"id":"h_piel","nombre":"Piel ígnea","desc":"Resiste Hielo.","fx":[{"k":"res","tipo":"Hielo","m":0.5}]},{"id":"h_espinas","nombre":"Espinas","desc":"Refleja 25% del daño físico.","fx":[{"k":"ref","v":25,"w":"fis","b":"dmg"}]},{"id":"h_toxica","nombre":"Piel tóxica","desc":"30% de intoxicar al golpear por contacto.","fx":[{"k":"stt","p":30,"e":"Intoxicación","w":"cont"}]},{"id":"h_velo","nombre":"Veloz","desc":"Prioridad +1.","fx":[{"k":"pri","v":1}]},{"id":"h_furia","nombre":"Furia","desc":"Con poca vida sube ATK.","fx":[{"k":"low","pct":33,"s":"ATK","n":1}]},{"id":"h_llama","nombre":"Llama interior","desc":"Fuego ×1.2.","fx":[{"k":"pow","tipo":"Fuego","m":1.2}]},{"id":"h_intim","nombre":"Intimidación","desc":"Al entrar baja el ATK rival.","fx":[{"k":"int","s":"ATK","n":-1,"w":"all"}]},{"id":"h_trampa","nombre":"Red pegajosa","desc":"Atrapa al rival al entrar.","fx":[{"k":"trap","p":100,"turns":3,"w":"enter"}]},{"id":"h_nada","nombre":"Sin habilidad útil","desc":"Para comparar.","fx":[]}]}</script>
+
+<script>
+/* Música: los objetos Audio se crean con new Audio(url) tras el primer clic. */
+(function(){
+const $=id=>document.getElementById(id),root=document.documentElement;
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const setT=t=>{root.dataset.theme=t;$('xtema').innerHTML=t==='dark'?'<i class="ic ic-sol"></i>':'<i class="ic ic-luna"></i>';$('xtema').title=t==='dark'?'Modo claro':'Modo oscuro (cálido)';$('xtema').setAttribute('aria-label',$('xtema').title)};
+setT(root.dataset.theme||'light');
+$('xtema').onclick=()=>{const t=root.dataset.theme==='dark'?'light':'dark';ls.set('rpg_tema',t);setT(t)};
+const btn=$('xmus'),proxy=$('xbgm');
+const URLS={menu:'../assets/audio/musica-menu.mp3',combate:'../assets/audio/musica-combate.mp3',ultimo:'../assets/audio/musica-ultimo.mp3'};
+const audios={};let actual=null,pista='menu',arrancado=false;
+proxy.volume=window.rpgVol?window.rpgVol.mus:.45;
+proxy.addEventListener('volumechange',()=>{if(actual)actual.volume=proxy.volume});
+const ui=()=>{const on=!!(actual&&!actual.paused);btn.classList.toggle('off',!on);btn.setAttribute('aria-pressed',on);btn.title=on?'Silenciar música':'Activar música';btn.setAttribute('aria-label',btn.title);proxy.dispatchEvent(new Event(on?'play':'pause'))};
+function audioDe(k){if(!audios[k]){const a=new Audio(URLS[k]);a.loop=true;a.preload='auto';a.volume=proxy.volume;['play','pause'].forEach(ev=>a.addEventListener(ev,()=>{if(a===actual)ui()}));audios[k]=a}return audios[k]}
+function sonar(k){const a=audioDe(k);if(actual&&actual!==a)actual.pause();actual=a;actual.volume=proxy.volume;try{actual.currentTime=0}catch(e){}const p=actual.play&&actual.play();if(!p||!p.then){ui();return Promise.resolve()}return p.then(ui).catch(()=>{ui();return Promise.reject()})}
+function setTrack(k){if(!URLS[k]||(k===pista&&actual))return;pista=k;if(!arrancado){ui();return}return sonar(pista)}
+window.rpgMusic={set:setTrack,get:()=>pista};
+btn.onclick=e=>{e.stopPropagation();arrancado=true;if(actual&&!actual.paused){ls.set('rpg_musica','off');actual.pause();ui();return}ls.set('rpg_musica','on');sonar(pista).catch(()=>{})};
+ui();
+if(ls.get('rpg_musica')!=='off'){
+  const EV=['pointerdown','mousedown','pointerup','click','keydown','touchend'];
+  const quitar=()=>EV.forEach(ev=>window.removeEventListener(ev,arrancar,true));
+  const arrancar=e=>{
+    if(ls.get('rpg_musica')==='off'){quitar();return}
+    if(e.target&&e.target.closest&&e.target.closest('#xmus'))return;
+    quitar();arrancado=true;sonar(pista).catch(()=>{});
+  };
+  EV.forEach(ev=>window.addEventListener(ev,arrancar,true));
+  if(window.toast)toast('Haz clic en cualquier parte para activar la música');
+}
+})();
+</script>
+<script src="../assets/js/laboratorio/navegacion.js"></script>
+<script src="../assets/js/laboratorio/objetos-rapidos.js"></script>
+<script src="../assets/js/laboratorio/exportacion.js"></script>
+<script src="../assets/js/laboratorio/calculadora-simulacion.js"></script>
+<script src="../assets/js/laboratorio/retratos-tipos.js"></script>
+<script src="../assets/js/laboratorio/ficha-criatura.js"></script>
+
+<script>
+/* Efectos: el MP3 se descarga una vez con fetch(url).arrayBuffer(). */
+(function(){
+const $=id=>document.getElementById(id),ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+let ctx=null,buf=null,on=ls.get('rpg_sfx')!=='off',voices=[],last=0;const btn=$('xsfx');
+const ui=()=>{btn.classList.toggle('off',!on);btn.setAttribute('aria-pressed',on);btn.title=on?'Silenciar efectos de sonido':'Activar efectos de sonido';btn.setAttribute('aria-label',btn.title)};
+async function init(){if(ctx)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=new AC();const r=await fetch('../assets/audio/efectos.mp3'),ab=await r.arrayBuffer();ctx.decodeAudioData(ab,b=>{buf=b;window.rpgLab.sfxListo=true},()=>{})}catch(e){}}
+function play(){if(!on||!ctx||!buf)return;if(ctx.state==='suspended')ctx.resume();const t=performance.now();if(t-last<70)return;last=t;const s=ctx.createBufferSource(),g=ctx.createGain();s.buffer=buf;g.gain.value=window.rpgVol?rpgVol.sfx:.5;s.connect(g);g.connect(ctx.destination);s.start();voices.push(s);s.onended=()=>{voices=voices.filter(v=>v!==s)};while(voices.length>3){try{voices.shift().stop()}catch(e){}}}
+document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#xsfx'))return;play()},true);
+document.addEventListener('change',e=>{if(e.target&&e.target.tagName==='SELECT')play()},true);
+btn.onclick=()=>{on=!on;ls.set('rpg_sfx',on?'on':'off');ui();if(on)play()};
+ui();init();window.rpgLab.sfx=()=>({on,listo:!!buf});
+})();
+</script>
+<script src="../assets/js/laboratorio/limites-base.js"></script>
+<script src="../assets/js/laboratorio/ajustes.js"></script>
+</body>
+
+</html>
