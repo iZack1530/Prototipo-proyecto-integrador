@@ -1,0 +1,1069 @@
+{
+  "esquema": 1,
+  "origen": {
+    "archivo": "datos_prueba.json",
+    "version": 5
+  },
+  "tipos": {
+    "nombres": [
+      "Fuego",
+      "Planta",
+      "Agua",
+      "Viento",
+      "Hielo",
+      "Tierra",
+      "Eléctrico",
+      "Roca",
+      "Tóxico",
+      "Metal",
+      "Oscuro",
+      "Sagrado",
+      "Neutro"
+    ],
+    "matriz": {
+      "Planta>Agua": 2,
+      "Planta>Tierra": 2,
+      "Planta>Fuego": 0.5,
+      "Planta>Planta": 0.5,
+      "Planta>Viento": 0.5,
+      "Fuego>Planta": 2,
+      "Fuego>Hielo": 2,
+      "Fuego>Agua": 0.5,
+      "Fuego>Fuego": 0.5,
+      "Fuego>Tierra": 0.5,
+      "Agua>Fuego": 2,
+      "Agua>Tierra": 2,
+      "Agua>Planta": 0.5,
+      "Agua>Agua": 0.5,
+      "Agua>Eléctrico": 0.5,
+      "Viento>Planta": 2,
+      "Viento>Tierra": 2,
+      "Viento>Viento": 0.5,
+      "Viento>Eléctrico": 0.5,
+      "Viento>Hielo": 0.5,
+      "Hielo>Planta": 2,
+      "Hielo>Viento": 2,
+      "Hielo>Tierra": 2,
+      "Hielo>Fuego": 0.5,
+      "Hielo>Agua": 0.5,
+      "Hielo>Hielo": 0.5,
+      "Tierra>Fuego": 2,
+      "Tierra>Eléctrico": 2,
+      "Tierra>Planta": 0.5,
+      "Tierra>Viento": 0.5,
+      "Eléctrico>Agua": 2,
+      "Eléctrico>Viento": 2,
+      "Eléctrico>Eléctrico": 0.5,
+      "Eléctrico>Planta": 0.5,
+      "Eléctrico>Tierra": 0.5,
+      "Oscuro>Sagrado": 2,
+      "Oscuro>Oscuro": 0.5,
+      "Oscuro>Neutro": 0.5,
+      "Sagrado>Oscuro": 2,
+      "Sagrado>Sagrado": 0.5,
+      "Sagrado>Neutro": 0.5
+    }
+  },
+  "criaturas": [
+    {
+      "id": "c_tonatiuh",
+      "nombre": "Tonatiuh",
+      "especie": "Ave solar",
+      "tipos": [
+        "Fuego",
+        "Viento"
+      ],
+      "nivel": 50,
+      "hab": "Llama interior",
+      "habId": "h_llama",
+      "habd": "Fuego ×1.2.",
+      "st": {
+        "hp": 2973,
+        "mp": 220,
+        "atk": 900,
+        "def": 750,
+        "matk": 1100,
+        "mdef": 800,
+        "spd": 1050
+      },
+      "ataques": [
+        "a_llamarada",
+        "a_colmillo",
+        "a_danza",
+        "a_rafaga",
+        "a_golpe"
+      ]
+    },
+    {
+      "id": "c_quetzal",
+      "nombre": "Quetzalín",
+      "especie": "Ave plumada",
+      "tipos": [
+        "Viento",
+        "Sagrado"
+      ],
+      "nivel": 50,
+      "hab": "Veloz",
+      "habId": "h_velo",
+      "habd": "Prioridad +1.",
+      "st": {
+        "hp": 2885,
+        "mp": 230,
+        "atk": 800,
+        "def": 800,
+        "matk": 1050,
+        "mdef": 950,
+        "spd": 1200
+      },
+      "ataques": [
+        "a_rafaga",
+        "a_luz",
+        "a_aliento",
+        "a_velo",
+        "a_giro"
+      ]
+    },
+    {
+      "id": "c_ahuizotl",
+      "nombre": "Ahuizotl",
+      "especie": "Nutria acuática",
+      "tipos": [
+        "Agua",
+        "Oscuro"
+      ],
+      "nivel": 50,
+      "hab": "Red pegajosa",
+      "habId": "h_trampa",
+      "habd": "Atrapa al rival al entrar.",
+      "st": {
+        "hp": 3141,
+        "mp": 225,
+        "atk": 950,
+        "def": 900,
+        "matk": 1000,
+        "mdef": 900,
+        "spd": 800
+      },
+      "ataques": [
+        "a_chorro",
+        "a_burbuja",
+        "a_mordisco",
+        "a_marea",
+        "a_rugido"
+      ]
+    },
+    {
+      "id": "c_ceiba",
+      "nombre": "Ceibón",
+      "especie": "Árbol guardián",
+      "tipos": [
+        "Planta",
+        "Tierra"
+      ],
+      "nivel": 50,
+      "hab": "Espinas",
+      "habId": "h_espinas",
+      "habd": "Refleja 25% del daño físico.",
+      "st": {
+        "hp": 3596,
+        "mp": 210,
+        "atk": 1000,
+        "def": 1200,
+        "matk": 800,
+        "mdef": 1000,
+        "spd": 500
+      },
+      "ataques": [
+        "a_latigo",
+        "a_drenaje",
+        "a_raices",
+        "a_muro",
+        "a_esporas"
+      ]
+    },
+    {
+      "id": "c_tlaloc",
+      "nombre": "Tlalocán",
+      "especie": "Nube viva",
+      "tipos": [
+        "Eléctrico",
+        "Agua"
+      ],
+      "nivel": 50,
+      "hab": "Flotación",
+      "habId": "h_flotar",
+      "habd": "Inmune a Tierra.",
+      "st": {
+        "hp": 2794,
+        "mp": 240,
+        "atk": 700,
+        "def": 750,
+        "matk": 1250,
+        "mdef": 1000,
+        "spd": 1100
+      },
+      "ataques": [
+        "a_rayo",
+        "a_chispa",
+        "a_carga",
+        "a_chorro",
+        "a_velo"
+      ]
+    },
+    {
+      "id": "c_itzcuintli",
+      "nombre": "Itzcuintli",
+      "especie": "Can espectral",
+      "tipos": [
+        "Oscuro",
+        "Neutro"
+      ],
+      "nivel": 50,
+      "hab": "Intimidación",
+      "habId": "h_intim",
+      "habd": "Al entrar baja el ATK rival.",
+      "st": {
+        "hp": 3058,
+        "mp": 215,
+        "atk": 1150,
+        "def": 850,
+        "matk": 800,
+        "mdef": 800,
+        "spd": 1050
+      },
+      "ataques": [
+        "a_mordisco",
+        "a_desgarro",
+        "a_rugido",
+        "a_pesadilla",
+        "a_golpe"
+      ]
+    },
+    {
+      "id": "c_tepeyolot",
+      "nombre": "Tepeyolotl",
+      "especie": "Jaguar de roca",
+      "tipos": [
+        "Roca",
+        "Tierra"
+      ],
+      "nivel": 50,
+      "hab": "Furia",
+      "habId": "h_furia",
+      "habd": "Con poca vida sube ATK.",
+      "st": {
+        "hp": 3300,
+        "mp": 205,
+        "atk": 1250,
+        "def": 1100,
+        "matk": 650,
+        "mdef": 750,
+        "spd": 700
+      },
+      "ataques": [
+        "a_pedrada",
+        "a_terremoto",
+        "a_coraza",
+        "a_alud",
+        "a_golpe"
+      ]
+    },
+    {
+      "id": "c_ixtli",
+      "nombre": "Ixtlimetal",
+      "especie": "Autómata de obsidiana",
+      "tipos": [
+        "Metal",
+        "Roca"
+      ],
+      "nivel": 50,
+      "hab": "Piel ígnea",
+      "habId": "h_piel",
+      "habd": "Resiste Hielo.",
+      "st": {
+        "hp": 3222,
+        "mp": 210,
+        "atk": 1100,
+        "def": 1300,
+        "matk": 700,
+        "mdef": 1000,
+        "spd": 600
+      },
+      "ataques": [
+        "a_acero",
+        "a_garra",
+        "a_extremo",
+        "a_coraza",
+        "a_pedrada"
+      ]
+    },
+    {
+      "id": "c_mictlan",
+      "nombre": "Mictlani",
+      "especie": "Mariposa nocturna",
+      "tipos": [
+        "Tóxico",
+        "Oscuro"
+      ],
+      "nivel": 50,
+      "hab": "Piel tóxica",
+      "habId": "h_toxica",
+      "habd": "30% de intoxicar al golpear por contacto.",
+      "st": {
+        "hp": 2794,
+        "mp": 235,
+        "atk": 750,
+        "def": 800,
+        "matk": 1100,
+        "mdef": 950,
+        "spd": 1000
+      },
+      "ataques": [
+        "a_dardo",
+        "a_niebla",
+        "a_corrosion",
+        "a_pesadilla",
+        "a_retirada"
+      ]
+    },
+    {
+      "id": "c_itztli",
+      "nombre": "Itztli",
+      "especie": "Zorro de hielo",
+      "tipos": [
+        "Hielo",
+        "Viento"
+      ],
+      "nivel": 50,
+      "hab": "Piel ígnea",
+      "habId": "h_piel",
+      "habd": "Resiste Hielo.",
+      "st": {
+        "hp": 2885,
+        "mp": 225,
+        "atk": 950,
+        "def": 800,
+        "matk": 1050,
+        "mdef": 850,
+        "spd": 1150
+      },
+      "ataques": [
+        "a_ventisca",
+        "a_lanza",
+        "a_escarcha",
+        "a_lentitud",
+        "a_giro"
+      ]
+    },
+    {
+      "id": "c_xochi",
+      "nombre": "Xochitl",
+      "especie": "Flor sanadora",
+      "tipos": [
+        "Planta",
+        "Sagrado"
+      ],
+      "nivel": 50,
+      "hab": "Sin habilidad útil",
+      "habId": "h_nada",
+      "habd": "Para comparar.",
+      "st": {
+        "hp": 3300,
+        "mp": 245,
+        "atk": 650,
+        "def": 950,
+        "matk": 1100,
+        "mdef": 1200,
+        "spd": 700
+      },
+      "ataques": [
+        "a_drenaje",
+        "a_luz",
+        "a_himno",
+        "a_barrera",
+        "a_succion"
+      ]
+    },
+    {
+      "id": "c_neutro",
+      "nombre": "Tlacuache",
+      "especie": "Marsupial común",
+      "tipos": [
+        "Neutro"
+      ],
+      "nivel": 50,
+      "hab": "Sin habilidad útil",
+      "habId": "h_nada",
+      "habd": "Para comparar.",
+      "st": {
+        "hp": 3141,
+        "mp": 220,
+        "atk": 900,
+        "def": 900,
+        "matk": 900,
+        "mdef": 900,
+        "spd": 900
+      },
+      "ataques": [
+        "a_golpe",
+        "a_azote",
+        "a_desgarro",
+        "a_relampago",
+        "a_herida"
+      ]
+    }
+  ],
+  "ataques": [
+    {
+      "id": "a_llamarada",
+      "nombre": "Llamarada",
+      "desc": "",
+      "tipo": "Fuego",
+      "cat": "mag",
+      "pot": 90,
+      "mp": 20,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_colmillo",
+      "nombre": "Colmillo ígneo",
+      "desc": "",
+      "tipo": "Fuego",
+      "cat": "fis",
+      "pot": 65,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_latigo",
+      "nombre": "Latigazo",
+      "desc": "",
+      "tipo": "Planta",
+      "cat": "fis",
+      "pot": 70,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_drenaje",
+      "nombre": "Drenaje vital",
+      "desc": "",
+      "tipo": "Planta",
+      "cat": "mag",
+      "pot": 60,
+      "mp": 14,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_hojas",
+      "nombre": "Lluvia de hojas",
+      "desc": "",
+      "tipo": "Planta",
+      "cat": "mag",
+      "pot": 55,
+      "mp": 18,
+      "alc": "area",
+      "aoe": 75
+    },
+    {
+      "id": "a_chorro",
+      "nombre": "Chorro",
+      "desc": "",
+      "tipo": "Agua",
+      "cat": "mag",
+      "pot": 70,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_marea",
+      "nombre": "Marea",
+      "desc": "",
+      "tipo": "Agua",
+      "cat": "mag",
+      "pot": 70,
+      "mp": 22,
+      "alc": "area",
+      "aoe": 75
+    },
+    {
+      "id": "a_rafaga",
+      "nombre": "Ráfaga",
+      "desc": "",
+      "tipo": "Viento",
+      "cat": "mag",
+      "pot": 60,
+      "mp": 8,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_tornado",
+      "nombre": "Tornado",
+      "desc": "",
+      "tipo": "Viento",
+      "cat": "mag",
+      "pot": 65,
+      "mp": 18,
+      "alc": "area",
+      "aoe": 75
+    },
+    {
+      "id": "a_ventisca",
+      "nombre": "Ventisca",
+      "desc": "",
+      "tipo": "Hielo",
+      "cat": "mag",
+      "pot": 80,
+      "mp": 24,
+      "alc": "area",
+      "aoe": 75
+    },
+    {
+      "id": "a_lanza",
+      "nombre": "Lanza helada",
+      "desc": "",
+      "tipo": "Hielo",
+      "cat": "fis",
+      "pot": 75,
+      "mp": 14,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_terremoto",
+      "nombre": "Terremoto",
+      "desc": "",
+      "tipo": "Tierra",
+      "cat": "fis",
+      "pot": 85,
+      "mp": 24,
+      "alc": "area",
+      "aoe": 75
+    },
+    {
+      "id": "a_rayo",
+      "nombre": "Rayo",
+      "desc": "",
+      "tipo": "Eléctrico",
+      "cat": "mag",
+      "pot": 80,
+      "mp": 16,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_chispa",
+      "nombre": "Chispa",
+      "desc": "",
+      "tipo": "Eléctrico",
+      "cat": "fis",
+      "pot": 40,
+      "mp": 6,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_pedrada",
+      "nombre": "Pedrada",
+      "desc": "",
+      "tipo": "Roca",
+      "cat": "fis",
+      "pot": 80,
+      "mp": 14,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_alud",
+      "nombre": "Alud",
+      "desc": "",
+      "tipo": "Roca",
+      "cat": "fis",
+      "pot": 70,
+      "mp": 20,
+      "alc": "area",
+      "aoe": 75
+    },
+    {
+      "id": "a_dardo",
+      "nombre": "Dardo venenoso",
+      "desc": "",
+      "tipo": "Tóxico",
+      "cat": "fis",
+      "pot": 45,
+      "mp": 8,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_garra",
+      "nombre": "Garra metálica",
+      "desc": "",
+      "tipo": "Metal",
+      "cat": "fis",
+      "pot": 70,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_acero",
+      "nombre": "Golpe de acero",
+      "desc": "",
+      "tipo": "Metal",
+      "cat": "fis",
+      "pot": 95,
+      "mp": 20,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_mordisco",
+      "nombre": "Mordisco sombrío",
+      "desc": "",
+      "tipo": "Oscuro",
+      "cat": "fis",
+      "pot": 70,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_pesadilla",
+      "nombre": "Pesadilla",
+      "desc": "",
+      "tipo": "Oscuro",
+      "cat": "mag",
+      "pot": 65,
+      "mp": 14,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_luz",
+      "nombre": "Rayo sagrado",
+      "desc": "",
+      "tipo": "Sagrado",
+      "cat": "mag",
+      "pot": 75,
+      "mp": 16,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_golpe",
+      "nombre": "Golpe certero",
+      "desc": "",
+      "tipo": "Neutro",
+      "cat": "fis",
+      "pot": 60,
+      "mp": 6,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_azote",
+      "nombre": "Azote",
+      "desc": "",
+      "tipo": "Neutro",
+      "cat": "fis",
+      "pot": 100,
+      "mp": 22,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_desgarro",
+      "nombre": "Desgarro",
+      "desc": "",
+      "tipo": "Neutro",
+      "cat": "fis",
+      "pot": 55,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_giro",
+      "nombre": "Giro veloz",
+      "desc": "",
+      "tipo": "Viento",
+      "cat": "fis",
+      "pot": 50,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_retirada",
+      "nombre": "Retirada táctica",
+      "desc": "",
+      "tipo": "Oscuro",
+      "cat": "mag",
+      "pot": 40,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_burbuja",
+      "nombre": "Burbuja trampa",
+      "desc": "",
+      "tipo": "Agua",
+      "cat": "mag",
+      "pot": 40,
+      "mp": 14,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_raices",
+      "nombre": "Raíces atrapantes",
+      "desc": "",
+      "tipo": "Planta",
+      "cat": "est",
+      "pot": 0,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_danza",
+      "nombre": "Danza de fuego",
+      "desc": "",
+      "tipo": "Fuego",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_carga",
+      "nombre": "Carga",
+      "desc": "",
+      "tipo": "Eléctrico",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_coraza",
+      "nombre": "Coraza pétrea",
+      "desc": "",
+      "tipo": "Roca",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_rugido",
+      "nombre": "Rugido intimidante",
+      "desc": "",
+      "tipo": "Oscuro",
+      "cat": "est",
+      "pot": 0,
+      "mp": 8,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_corrosion",
+      "nombre": "Veneno corrosivo",
+      "desc": "",
+      "tipo": "Tóxico",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_himno",
+      "nombre": "Himno solar",
+      "desc": "",
+      "tipo": "Sagrado",
+      "cat": "est",
+      "pot": 0,
+      "mp": 14,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_aliento",
+      "nombre": "Aliento aliado",
+      "desc": "",
+      "tipo": "Viento",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_sinergia",
+      "nombre": "Sinergia",
+      "desc": "",
+      "tipo": "Planta",
+      "cat": "est",
+      "pot": 0,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_lentitud",
+      "nombre": "Viento helado",
+      "desc": "",
+      "tipo": "Hielo",
+      "cat": "est",
+      "pot": 0,
+      "mp": 8,
+      "alc": "area",
+      "aoe": 75
+    },
+    {
+      "id": "a_extremo",
+      "nombre": "Frenesí extremo",
+      "desc": "",
+      "tipo": "Metal",
+      "cat": "est",
+      "pot": 0,
+      "mp": 16,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_esporas",
+      "nombre": "Esporas",
+      "desc": "",
+      "tipo": "Planta",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_niebla",
+      "nombre": "Niebla tóxica",
+      "desc": "",
+      "tipo": "Tóxico",
+      "cat": "est",
+      "pot": 0,
+      "mp": 14,
+      "alc": "area",
+      "aoe": 75
+    },
+    {
+      "id": "a_fuegofatuo",
+      "nombre": "Fuego fatuo",
+      "desc": "",
+      "tipo": "Fuego",
+      "cat": "est",
+      "pot": 0,
+      "mp": 8,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_escarcha",
+      "nombre": "Beso gélido",
+      "desc": "",
+      "tipo": "Hielo",
+      "cat": "est",
+      "pot": 0,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_maldicion",
+      "nombre": "Mal de ojo",
+      "desc": "",
+      "tipo": "Oscuro",
+      "cat": "est",
+      "pot": 0,
+      "mp": 12,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_herida",
+      "nombre": "Tajo abierto",
+      "desc": "",
+      "tipo": "Neutro",
+      "cat": "est",
+      "pot": 0,
+      "mp": 8,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_succion",
+      "nombre": "Succión de maná",
+      "desc": "",
+      "tipo": "Sagrado",
+      "cat": "est",
+      "pot": 0,
+      "mp": 6,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_vaciar",
+      "nombre": "Vaciar espíritu",
+      "desc": "",
+      "tipo": "Oscuro",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_barrera",
+      "nombre": "Barrera sagrada",
+      "desc": "",
+      "tipo": "Sagrado",
+      "cat": "est",
+      "pot": 0,
+      "mp": 14,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_muro",
+      "nombre": "Muro de barro",
+      "desc": "",
+      "tipo": "Tierra",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_velo",
+      "nombre": "Velo mágico",
+      "desc": "",
+      "tipo": "Viento",
+      "cat": "est",
+      "pot": 0,
+      "mp": 10,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_relampago",
+      "nombre": "Golpe relámpago",
+      "desc": "",
+      "tipo": "Neutro",
+      "cat": "fis",
+      "pot": 45,
+      "mp": 8,
+      "alc": "uni",
+      "aoe": 75
+    },
+    {
+      "id": "a_lento",
+      "nombre": "Aplastamiento",
+      "desc": "",
+      "tipo": "Tierra",
+      "cat": "fis",
+      "pot": 110,
+      "mp": 24,
+      "alc": "uni",
+      "aoe": 75
+    }
+  ],
+  "habilidades": [
+    {
+      "id": "h_flotar",
+      "nombre": "Flotación",
+      "desc": "Inmune a Tierra.",
+      "fx": [
+        {
+          "k": "imm",
+          "tipo": "Tierra"
+        }
+      ]
+    },
+    {
+      "id": "h_piel",
+      "nombre": "Piel ígnea",
+      "desc": "Resiste Hielo.",
+      "fx": [
+        {
+          "k": "res",
+          "tipo": "Hielo",
+          "m": 0.5
+        }
+      ]
+    },
+    {
+      "id": "h_espinas",
+      "nombre": "Espinas",
+      "desc": "Refleja 25% del daño físico.",
+      "fx": []
+    },
+    {
+      "id": "h_toxica",
+      "nombre": "Piel tóxica",
+      "desc": "30% de intoxicar al golpear por contacto.",
+      "fx": []
+    },
+    {
+      "id": "h_velo",
+      "nombre": "Veloz",
+      "desc": "Prioridad +1.",
+      "fx": []
+    },
+    {
+      "id": "h_furia",
+      "nombre": "Furia",
+      "desc": "Con poca vida sube ATK.",
+      "fx": []
+    },
+    {
+      "id": "h_llama",
+      "nombre": "Llama interior",
+      "desc": "Fuego ×1.2.",
+      "fx": [
+        {
+          "k": "pow",
+          "tipo": "Fuego",
+          "m": 1.2
+        }
+      ]
+    },
+    {
+      "id": "h_intim",
+      "nombre": "Intimidación",
+      "desc": "Al entrar baja el ATK rival.",
+      "fx": []
+    },
+    {
+      "id": "h_trampa",
+      "nombre": "Red pegajosa",
+      "desc": "Atrapa al rival al entrar.",
+      "fx": []
+    },
+    {
+      "id": "h_nada",
+      "nombre": "Sin habilidad útil",
+      "desc": "Para comparar.",
+      "fx": []
+    }
+  ]
+}

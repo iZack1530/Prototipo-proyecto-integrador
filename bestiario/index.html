@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bestiario · Laboratorio RPG</title>
+<meta name="description" content="Bestiario público: criaturas, ataques, habilidades, tabla de tipos y calculadora de daño.">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/tema.css">
+<script src="../assets/js/laboratorio/tema-inicial.js"></script>
+<style>
+  main{grid-template-columns:minmax(0,1fr);max-width:1120px}
+  header{align-items:center}
+  #bn{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:6px}
+  #bn button{min-width:120px}
+  #bn button.on{border-color:var(--cy);background:var(--panel2);font-weight:600}
+  .enlaces{font-size:.82rem}
+  .enlaces a{color:var(--cy)}
+  .card h3{margin:0 0 4px;color:var(--cy)}
+  .card small{color:var(--mut)}
+  .chips{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+  .chip{padding:1px 7px;border:1px solid var(--line);border-radius:10px;font-size:.76rem}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px 10px;margin-top:8px;font-size:.82rem}
+  .stats b{color:var(--am)}
+  .movs{font-size:.78rem;color:var(--mut);margin-top:8px}
+  .chk{display:flex;align-items:center;gap:6px;font-size:.85rem}
+  .chk input{width:auto}
+  .tabla{overflow:auto;max-height:70vh}
+  table.mx{border-collapse:collapse;width:100%;font-size:.82rem}
+  table.mx th,table.mx td{border:1px solid var(--line);padding:5px 7px;text-align:left;white-space:nowrap}
+  table.mx th{background:var(--panel2);position:sticky;top:0;z-index:1}
+  .tc{border-collapse:collapse;font-size:.76rem}
+  .tc th,.tc td{border:1px solid var(--line);padding:4px 6px;text-align:center;min-width:44px}
+  .tc th{background:var(--panel2);position:sticky;top:0}
+  .tc th.rowh{position:sticky;left:0;z-index:2}
+  .v2{color:var(--ok);font-weight:700}
+  .v05{color:var(--bad)}
+  .v0{background:rgba(239,68,68,.22)}
+  #cout .big{font-size:2rem;font-weight:700;color:var(--am)}
+  #cout .hint{margin-top:4px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Bestiario</h1>
+  <p>Consulta pública de criaturas, ataques, habilidades y tipos.</p>
+  <nav id="bn" aria-label="Secciones del bestiario">
+    <button type="button" data-tab="criaturas" class="on">Criaturas</button>
+    <button type="button" data-tab="ataques">Ataques</button>
+    <button type="button" data-tab="habilidades">Habilidades</button>
+    <button type="button" data-tab="tipos">Tipos</button>
+    <button type="button" data-tab="calculadora">Calculadora</button>
+  </nav>
+  <p class="enlaces"><a href="../">Ir al Laboratorio</a> · <a href="../laboratorio/#equilibrio">Ver Equilibrio</a></p>
+</header>
+
+<main>
+<section id="tab-criaturas">
+  <h2>Criaturas <small id="n-criaturas"></small></h2>
+  <p class="hint">Estadísticas ya resueltas para nivel 50, sin fórmulas internas.</p>
+  <div id="lista-criaturas" class="grid g3"></div>
+</section>
+
+<section id="tab-ataques" class="hid">
+  <h2>Ataques <small id="n-ataques"></small></h2>
+  <div class="tabla"><table class="mx" id="tabla-ataques"></table></div>
+</section>
+
+<section id="tab-habilidades" class="hid">
+  <h2>Habilidades <small id="n-habilidades"></small></h2>
+  <div class="tabla"><table class="mx" id="tabla-habilidades"></table></div>
+</section>
+
+<section id="tab-tipos" class="hid">
+  <h2>Tabla de tipos</h2>
+  <p class="hint">Filas: tipo del ataque. Columnas: tipo del defensor. 2 = superior, 0.5 = inferior, 0 = inmune.</p>
+  <div class="tabla"><table class="tc" id="tabla-tipos"></table></div>
+</section>
+
+<section id="tab-calculadora" class="hid">
+  <h2>Calculadora de daño</h2>
+  <p class="hint">Mismas reglas que la calculadora de Equilibrio, sin variación aleatoria.</p>
+  <div class="grid g3">
+    <div><label for="c-atk">Atacante</label><select id="c-atk"></select></div>
+    <div><label for="c-mov">Ataque</label><select id="c-mov"></select></div>
+    <div><label for="c-def">Defensor</label><select id="c-def"></select></div>
+  </div>
+  <div class="row" style="margin-top:10px">
+    <label class="chk" for="c-area"><input type="checkbox" id="c-area"> Objetivo múltiple</label>
+  </div>
+  <div id="c-out" class="tot" aria-live="polite">Cargando…</div>
+</section>
+</main>
+
+<script defer src="../assets/js/laboratorio/motor.js"></script>
+<script defer src="app.js"></script>
+</body>
+</html>
