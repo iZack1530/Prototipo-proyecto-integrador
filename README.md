@@ -2,10 +2,15 @@
 
 Herramienta de diseño y pruebas para un RPG por turnos 3v3 (criaturas, ataques, habilidades, tipos, simulador de combate, equilibrio y exportación para Unity).
 
-Es una sola página estática: `index.html` (sin dependencias externas ni servidor). Los datos se guardan en el `localStorage` del navegador.
+Es un sitio estático sin dependencias externas ni servidor: `index.html` carga `assets/css/` (base, tema, componentes), `assets/js/laboratorio/` (motor, interfaz y módulos) y `assets/audio/`. Los datos se guardan en el `localStorage` del navegador.
+
+## Estructura
+- `assets/css/`: `base.css` (estructura), `tema.css` («Tecnología viva») y `componentes.css` (arena y ajustes).
+- `assets/js/laboratorio/`: `motor.js` (datos, fórmulas, RNG y combate) y un archivo por módulo de interfaz, en orden de carga.
+- `assets/audio/`: pistas MP3 (menú, combate, último turno y efectos), cargadas al primer clic.
 
 ## Publicar en GitHub Pages
-1. Crea un repositorio y sube `index.html`, `.nojekyll` y este `README.md`.
+1. Crea un repositorio y sube `index.html`, `assets/`, `datos_prueba.json`, `.nojekyll` y este `README.md`.
 2. En **Settings → Pages**, elige *Deploy from a branch*, rama `main` y carpeta `/ (root)`.
 3. Abre `https://<usuario>.github.io/<repositorio>/`.
 

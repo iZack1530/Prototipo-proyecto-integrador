@@ -1,0 +1,2 @@
+/* Laboratorio RPG — Tema y volumen aplicados antes del primer pintado */
+try{var t=localStorage.getItem('rpg_tema');if(!t)t='dark';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}try{var v=JSON.parse(localStorage.getItem('rpg_vol')||'null');window.rpgVol={mus:v&&v.mus!=null?v.mus:.45,sfx:v&&v.sfx!=null?v.sfx:.5}}catch(e){window.rpgVol={mus:.45,sfx:.5}}
