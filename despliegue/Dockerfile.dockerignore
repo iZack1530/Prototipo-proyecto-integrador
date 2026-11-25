@@ -1,0 +1,14 @@
+.git
+.gitignore
+.github
+.vs
+.idea
+**/bin
+**/obj
+**/node_modules
+archivo
+despliegue/.env
+despliegue/auth/htpasswd
+despliegue/certificados
+despliegue/certbot-www
+laboratorio-rpg-pages.zip

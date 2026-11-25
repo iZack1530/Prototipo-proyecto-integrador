@@ -1,0 +1,58 @@
+name: despliegue
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: despliegue-main
+  cancel-in-progress: true
+
+jobs:
+  compilar-probar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+
+      - name: Instalar .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restaurar
+        run: dotnet restore HorizonMythos.sln
+
+      - name: Compilar
+        run: dotnet build HorizonMythos.sln --no-restore --configuration Release
+
+      - name: Probar (bloquea el despliegue si falla)
+        run: dotnet test HorizonMythos.sln --no-build --configuration Release --verbosity normal
+
+      - name: Construir imagen de la API
+        run: docker build -f despliegue/Dockerfile -t horizon-mythos-api:ci .
+
+  desplegar:
+    needs: compilar-probar
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: produccion
+    steps:
+      - name: Reiniciar el stack por SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            set -e
+            cd "${{ secrets.RUTA_PROYECTO }}"
+            git fetch --prune
+            git checkout main
+            git pull --ff-only
+            cd despliegue
+            docker compose pull bd nginx || true
+            docker compose up -d --build --remove-orphans
+            docker compose ps
+            curl --fail --retry 10 --retry-delay 3 http://localhost/api/salud

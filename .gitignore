@@ -22,3 +22,12 @@ out/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Despliegue (I4): secretos y volúmenes locales
+despliegue/.env
+despliegue/auth/htpasswd
+despliegue/certificados/*
+!despliegue/certificados/.gitkeep
+despliegue/certbot-www/*
+!despliegue/certbot-www/.gitkeep
+src/HorizonMythos.Servidor/wwwroot/media/

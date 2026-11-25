@@ -1,0 +1,71 @@
+name: horizon-mythos
+
+services:
+  bd:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-horizon_mythos}
+      POSTGRES_USER: ${POSTGRES_USER:-horizon}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+    volumes:
+      - datos_bd:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-horizon} -d ${POSTGRES_DB:-horizon_mythos}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks: [interna]
+
+  api:
+    build:
+      context: ..
+      dockerfile: despliegue/Dockerfile
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__Principal: >-
+        Host=bd;Port=5432;Database=${POSTGRES_DB:-horizon_mythos};
+        Username=${POSTGRES_USER:-horizon};Password=${POSTGRES_PASSWORD}
+      Persistencia__MigrarAutomaticamente: "true"
+      Smtp__Host: ${SMTP_HOST:-}
+      Smtp__Puerto: ${SMTP_PUERTO:-587}
+      Smtp__Usuario: ${SMTP_USUARIO:-}
+      Smtp__Contrasena: ${SMTP_CONTRASENA:-}
+      Smtp__Remitente: ${SMTP_REMITENTE:-}
+      Smtp__UsarSsl: ${SMTP_USAR_SSL:-true}
+      Sitio__UrlPublica: ${SITIO_URL:-http://localhost}
+      Cors__Origenes__0: ${SITIO_URL:-http://localhost}
+      Combate__SegundosTurno: ${SEGUNDOS_TURNO:-45}
+    volumes:
+      - medios:/app/wwwroot/media
+    depends_on:
+      bd:
+        condition: service_healthy
+    networks: [interna]
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./auth:/etc/nginx/auth:ro
+      - ./certificados:/etc/letsencrypt:ro
+      - ./certbot-www:/var/www/certbot:ro
+      - medios:/var/www/media:ro
+      - ../:/var/www/horizon:ro
+    depends_on:
+      - api
+    networks: [interna]
+
+volumes:
+  datos_bd:
+  medios:
+
+networks:
+  interna:
+    driver: bridge
