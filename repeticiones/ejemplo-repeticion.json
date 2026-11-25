@@ -1,0 +1,82 @@
+{
+  "id": "abc123",
+  "nombre": "El alba sobre Auralia",
+  "formato": "3 contra 3",
+  "semilla": "auralia-amanecer-031",
+  "equipos": [
+    {
+      "nombre": "Centinelas de Auralia",
+      "criaturas": [
+        { "id": "c_tonatiuh", "nombre": "Tonatiuh", "tipos": ["Fuego", "Viento"], "hpActual": 2500, "hpMaximo": 2500 },
+        { "id": "c_quetzal", "nombre": "Quetzalín", "tipos": ["Viento", "Sagrado"], "hpActual": 2250, "hpMaximo": 2250 },
+        { "id": "c_ahuizotl", "nombre": "Ahuizotl", "tipos": ["Agua", "Oscuro"], "hpActual": 2400, "hpMaximo": 2400 }
+      ]
+    },
+    {
+      "nombre": "Guardia del Umbral",
+      "criaturas": [
+        { "id": "demo-ceibon", "nombre": "Ceibón", "tipos": ["Planta", "Tierra"], "hpActual": 3000, "hpMaximo": 3000 },
+        { "id": "demo-tlalocan", "nombre": "Tlalocán", "tipos": ["Eléctrico", "Agua"], "hpActual": 2800, "hpMaximo": 2800 },
+        { "id": "demo-itzcuintli", "nombre": "Itzcuintli", "tipos": ["Oscuro", "Neutro"], "hpActual": 2600, "hpMaximo": 2600 }
+      ]
+    }
+  ],
+  "acciones": [
+    { "turno": 1, "lado": "jugador", "tipo": "atacar", "actor": "Tonatiuh", "movimiento": "Llamarada", "objetivo": "Ceibón" },
+    { "turno": 1, "lado": "rival", "tipo": "atacar", "actor": "Tlalocán", "movimiento": "Chispa", "objetivo": "Tonatiuh" },
+    { "turno": 2, "lado": "jugador", "tipo": "cambiar", "actor": "Quetzalín" },
+    { "turno": 2, "lado": "rival", "tipo": "atacar", "actor": "Tlalocán", "movimiento": "Chispa", "objetivo": "Quetzalín" },
+    { "turno": 3, "lado": "jugador", "tipo": "usarObjeto", "actor": "Quetzalín", "objeto": "Poción" },
+    { "turno": 4, "lado": "jugador", "tipo": "atacar", "actor": "Quetzalín", "movimiento": "Ráfaga", "objetivo": "Tlalocán" },
+    { "turno": 5, "lado": "jugador", "tipo": "atacar", "actor": "Quetzalín", "movimiento": "Ráfaga", "objetivo": "Itzcuintli" }
+  ],
+  "eventos": [
+    {
+      "tipo": "inicio",
+      "jugador": {
+        "nombre": "Centinelas de Auralia",
+        "activo": 0,
+        "equipo": [
+          { "id": "c_tonatiuh", "nombre": "Tonatiuh", "tipos": ["Fuego", "Viento"], "hpActual": 2500, "hpMaximo": 2500, "ko": false },
+          { "id": "c_quetzal", "nombre": "Quetzalín", "tipos": ["Viento", "Sagrado"], "hpActual": 2250, "hpMaximo": 2250, "ko": false },
+          { "id": "c_ahuizotl", "nombre": "Ahuizotl", "tipos": ["Agua", "Oscuro"], "hpActual": 2400, "hpMaximo": 2400, "ko": false }
+        ]
+      },
+      "rival": {
+        "nombre": "Guardia del Umbral",
+        "activo": 0,
+        "equipo": [
+          { "id": "demo-ceibon", "nombre": "Ceibón", "tipos": ["Planta", "Tierra"], "hpActual": 3000, "hpMaximo": 3000, "ko": false },
+          { "id": "demo-tlalocan", "nombre": "Tlalocán", "tipos": ["Eléctrico", "Agua"], "hpActual": 2800, "hpMaximo": 2800, "ko": false },
+          { "id": "demo-itzcuintli", "nombre": "Itzcuintli", "tipos": ["Oscuro", "Neutro"], "hpActual": 2600, "hpMaximo": 2600, "ko": false }
+        ]
+      },
+      "mensaje": "Inicia el combate: Centinelas de Auralia frente a Guardia del Umbral."
+    },
+    { "tipo": "turno", "numero": 1, "mensaje": "Turno 1: Tonatiuh toma la iniciativa." },
+    { "tipo": "accion", "mensaje": "Tonatiuh usa Llamarada." },
+    { "tipo": "daño", "lado": "rival", "atacante": "Tonatiuh", "objetivoId": "demo-ceibon", "objetivo": "Ceibón", "cantidad": 3000, "hpActual": 0, "hpMaximo": 3000 },
+    { "tipo": "KO", "lado": "rival", "criaturaId": "demo-ceibon", "objetivo": "Ceibón" },
+    { "tipo": "cambio", "lado": "rival", "posicion": 1, "nombre": "Tlalocán", "mensaje": "Tlalocán entra al campo." },
+    { "tipo": "daño", "lado": "jugador", "atacante": "Tlalocán", "objetivoId": "c_tonatiuh", "objetivo": "Tonatiuh", "cantidad": 240, "hpActual": 2260, "hpMaximo": 2500 },
+    { "tipo": "turno", "numero": 2, "mensaje": "Turno 2: cambia la formación." },
+    { "tipo": "accion", "mensaje": "El equipo cambia a Quetzalín." },
+    { "tipo": "cambio", "lado": "jugador", "posicion": 1, "nombre": "Quetzalín" },
+    { "tipo": "estado", "estado": "Neblina", "mensaje": "El campo queda cubierto por Neblina." },
+    { "tipo": "daño", "lado": "jugador", "atacante": "Tlalocán", "objetivoId": "c_quetzal", "objetivo": "Quetzalín", "cantidad": 180, "hpActual": 2070, "hpMaximo": 2250 },
+    { "tipo": "turno", "numero": 3, "mensaje": "Turno 3: una Poción recupera el aliento." },
+    { "tipo": "accion", "mensaje": "Quetzalín usa una Poción." },
+    { "tipo": "objeto", "lado": "jugador", "nombre": "Poción", "objetivoId": "c_quetzal", "objetivo": "Quetzalín" },
+    { "tipo": "curacion", "lado": "jugador", "objetivoId": "c_quetzal", "objetivo": "Quetzalín", "cantidad": 180, "hpActual": 2250, "hpMaximo": 2250 },
+    { "tipo": "turno", "numero": 4, "mensaje": "Turno 4: Quetzalín contraataca." },
+    { "tipo": "accion", "mensaje": "Quetzalín usa Ráfaga." },
+    { "tipo": "daño", "lado": "rival", "atacante": "Quetzalín", "objetivoId": "demo-tlalocan", "objetivo": "Tlalocán", "cantidad": 2800, "hpActual": 0, "hpMaximo": 2800 },
+    { "tipo": "KO", "lado": "rival", "criaturaId": "demo-tlalocan", "objetivo": "Tlalocán" },
+    { "tipo": "cambio", "lado": "rival", "posicion": 2, "nombre": "Itzcuintli", "mensaje": "Itzcuintli entra al campo." },
+    { "tipo": "turno", "numero": 5, "mensaje": "Turno 5: la última criatura rival entra en combate." },
+    { "tipo": "accion", "mensaje": "Quetzalín usa Ráfaga." },
+    { "tipo": "daño", "lado": "rival", "atacante": "Quetzalín", "objetivoId": "demo-itzcuintli", "objetivo": "Itzcuintli", "cantidad": 2600, "hpActual": 0, "hpMaximo": 2600 },
+    { "tipo": "KO", "lado": "rival", "criaturaId": "demo-itzcuintli", "objetivo": "Itzcuintli" },
+    { "tipo": "fin", "resultado": "victoria", "mensaje": "Victoria de Centinelas de Auralia en cinco turnos." }
+  ]
+}

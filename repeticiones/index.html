@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a17">
+  <meta name="description" content="Reproduce encuentros de Horizon Mythos y revisa sus acciones y eventos.">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/tema.css">
+  <link rel="stylesheet" href="../assets/css/componentes.css">
+  <link rel="stylesheet" href="./repeticiones.css">
+  <title>Repeticiones — Horizon Mythos</title>
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+  <header class="cabecera cabecera-repeticiones">
+    <a class="marca" href="../index.html" aria-label="Horizon Mythos, inicio">
+      <span class="marca-simbolo" aria-hidden="true">H</span>
+      <span class="marca-texto">Horizon <span>Mythos</span></span>
+    </a>
+    <nav class="navegacion" aria-label="Navegación principal">
+      <a href="../index.html">Inicio</a>
+      <a href="../galeria/">Galería</a>
+      <a href="../jugar/">Jugar</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="repeticion-portada" aria-labelledby="titulo-repeticiones">
+      <div>
+        <p class="sobretitulo">Archivo de encuentros · Auralia</p>
+        <h1 id="titulo-repeticiones">Un combate,<br><em>visto de nuevo.</em></h1>
+        <p class="introduccion-repeticion">Sigue la semilla, las decisiones y cada evento en el orden en que ocurrió.</p>
+      </div>
+      <p class="folio-repeticion">Reproducción<br><strong>Acción por acción</strong></p>
+    </section>
+
+    <p class="estado-carga" id="estado-carga" role="status" aria-live="polite">Buscando repetición…</p>
+
+    <section class="visor-repeticion" id="visor-repeticion" aria-labelledby="nombre-repeticion" hidden>
+      <header class="visor-cabecera">
+        <div>
+          <p class="sobretitulo">Registro compartido</p>
+          <h2 id="nombre-repeticion">Repetición</h2>
+        </div>
+        <p class="id-repeticion" id="id-repeticion"></p>
+      </header>
+
+      <dl class="datos-repeticion">
+        <div><dt>Semilla</dt><dd id="semilla-repeticion">—</dd></div>
+        <div><dt>Formato</dt><dd id="formato-repeticion">—</dd></div>
+        <div><dt>Acciones</dt><dd id="cantidad-acciones">—</dd></div>
+        <div><dt>Eventos</dt><dd id="cantidad-eventos">—</dd></div>
+      </dl>
+
+      <section class="equipos-repeticion" aria-label="Equipos del encuentro">
+        <section class="bando" aria-labelledby="nombre-jugador">
+          <div class="bando-cabecera"><h3 id="nombre-jugador">Equipo A</h3><span>JUGADOR</span></div>
+          <div class="lista-unidades" id="equipo-jugador"></div>
+        </section>
+        <section class="bando" aria-labelledby="nombre-rival">
+          <div class="bando-cabecera"><h3 id="nombre-rival">Equipo B</h3><span>RIVAL</span></div>
+          <div class="lista-unidades" id="equipo-rival"></div>
+        </section>
+      </section>
+
+      <section class="reproductor" aria-label="Controles de reproducción">
+        <div class="controles-reproduccion">
+          <button type="button" class="accion-boton accion-principal" id="reproducir" disabled>Reproducir</button>
+          <button type="button" class="accion-boton" id="pausar" disabled>Pausar</button>
+          <button type="button" class="accion-boton" id="siguiente-evento" disabled>Siguiente evento</button>
+          <button type="button" class="accion-boton" id="reiniciar" disabled>Reiniciar</button>
+          <label class="selector-velocidad" for="velocidad-reproduccion">
+            Velocidad
+            <select id="velocidad-reproduccion" aria-label="Velocidad de reproducción">
+              <option value="1">1×</option>
+              <option value="2">2×</option>
+              <option value="4">4×</option>
+            </select>
+          </label>
+        </div>
+        <div class="progreso-reproduccion">
+          <progress id="progreso-repeticion" max="1" value="0" aria-label="Progreso de la repetición"></progress>
+          <span id="contador-evento">0 / 0</span>
+        </div>
+        <p class="estado-reproduccion" id="estado-reproduccion" aria-live="polite">Lista para reproducir.</p>
+      </section>
+
+      <div class="detalle-repeticion">
+        <section class="evento-actual" aria-labelledby="titulo-evento-actual">
+          <p class="sobretitulo" id="titulo-evento-actual">Evento actual</p>
+          <p id="texto-evento-actual">Pulsa reproducir o avanza un evento.</p>
+        </section>
+        <section class="acciones-repeticion" aria-labelledby="titulo-acciones">
+          <div class="registro-cabecera">
+            <h3 id="titulo-acciones">Acciones registradas</h3>
+            <span>Orden original</span>
+          </div>
+          <ol id="lista-acciones"></ol>
+        </section>
+      </div>
+
+      <section class="registro-panel" aria-labelledby="titulo-registro">
+        <div class="registro-cabecera">
+          <h3 id="titulo-registro">Registro de eventos</h3>
+          <span>Los eventos aparecen al reproducirse</span>
+        </div>
+        <ol class="registro-combate" id="registro-combate" aria-live="polite" aria-relevant="additions"></ol>
+      </section>
+    </section>
+  </main>
+
+  <footer class="pie pie-repeticiones">
+    <a class="marca marca-pie" href="../index.html"><span class="marca-simbolo" aria-hidden="true">H</span><span class="marca-texto">Horizon <span>Mythos</span></span></a>
+    <p>Un horizonte nuevo en cada encuentro.</p>
+    <a href="../laboratorio/">Laboratorio <span aria-hidden="true">↗</span></a>
+  </footer>
+
+  <script type="module" src="./repeticion.js"></script>
+</body>
+</html>
