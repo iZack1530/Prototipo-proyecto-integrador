@@ -1,1 +1,24 @@
 laboratorio-rpg-pages.zip
+
+# Compilación .NET
+bin/
+obj/
+out/
+[Dd]ebug/
+[Rr]elease/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Secretos y despliegue (I4)
+.env
+*.pfx
+*.key
+
+# Sistema
+.DS_Store
+Thumbs.db

@@ -38,3 +38,44 @@ Abre `http://localhost:8000/` para la portada, `http://localhost:8000/laboratori
 ## Datos
 
 Los datos se guardan en el `localStorage` del navegador. Usa la pestaña Reglas → **Cargar datos de prueba** o **Importar todo** con `datos_prueba.json`. En Ajustes puedes exportarlos para respaldarlos o moverlos entre equipos. La música y los efectos arrancan tras el primer clic.
+
+## Solución C# (Integrante 3)
+
+Junto al sitio estático convive la solución .NET del proyecto. El **Núcleo** es la única fuente de verdad de las reglas de combate: lo usan el servidor y, como DLL `netstandard2.1`, el cliente de Unity.
+
+```text
+├─ HorizonMythos.sln
+├─ src/
+│  ├─ HorizonMythos.Nucleo/       # netstandard2.1, sin ASP.NET ni Unity
+│  ├─ HorizonMythos.Servidor/     # ASP.NET Core (.NET 10) — esqueleto, lo completa I4
+│  └─ HorizonMythos.Simulador/    # consola de simulación por lotes
+├─ pruebas/
+│  ├─ HorizonMythos.Nucleo.Pruebas/   # xUnit con casos_prueba.json
+│  └─ HorizonMythos.Servidor.Pruebas/ # xUnit (esqueleto, lo completa I4)
+└─ .github/workflows/integracion.yml
+```
+
+Convenciones: nombres en español, un commit por funcionalidad, ramas `iN/<tema>` integradas por Pull Request, y `main` siempre compilando. El Núcleo no referencia ASP.NET Core, Unity ni paquetes NuGet.
+
+### Contrato Núcleo ↔ Servidor ↔ Cliente
+
+- `Batalla.Crear(catalogo, equipoA, equipoB, formato, semilla)`
+- `Batalla.ResolverTurno(accionA, accionB) → IReadOnlyList<EventoCombate>`
+- Acciones: `atacar`, `cambiar`, `usarObjeto`. Eventos: `daño`, `estado`, `clima`, `KO`, `fin`.
+- Hub SignalR del servidor: `/hub/combate`.
+
+### Cómo verificar
+
+```bash
+dotnet restore
+dotnet build --no-restore
+dotnet test --no-build
+```
+
+Simulación masiva:
+
+```bash
+dotnet run --project src/HorizonMythos.Simulador -- --combates 3000
+```
+
+Las pruebas de paridad consumen `pruebas/HorizonMythos.Nucleo.Pruebas/casos_prueba.json`, generado por el Laboratorio (`herramientas/generar-casos.mjs`) a partir de `datos_prueba.json` v5. El orden de los grupos es RNG, estadísticas, costes, daño, efectos y repeticiones.

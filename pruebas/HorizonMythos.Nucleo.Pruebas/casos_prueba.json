@@ -1,0 +1,1548 @@
+{
+  "esquema": 1,
+  "origen": {
+    "datos": "datos_prueba.json",
+    "motor": "assets/js/laboratorio/motor.js",
+    "version": 5
+  },
+  "grupos": [
+    {
+      "orden": "rng",
+      "casos": [
+        {
+          "semilla": "paridad",
+          "decimales": 10,
+          "valores": [
+            0.4870110827,
+            0.0979723502,
+            0.4474085863
+          ]
+        }
+      ]
+    },
+    {
+      "orden": "estadisticas",
+      "casos": [
+        {
+          "id": "c_tonatiuh",
+          "nombre": "Tonatiuh",
+          "nivel": 50,
+          "base": {
+            "hp": 80,
+            "mp": 70,
+            "atk": 80,
+            "def": 65,
+            "matk": 100,
+            "mdef": 70,
+            "spd": 95
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 2973,
+            "mp": 220,
+            "atk": 900,
+            "def": 750,
+            "matk": 1100,
+            "mdef": 800,
+            "spd": 1050
+          }
+        },
+        {
+          "id": "c_quetzal",
+          "nombre": "Quetzalín",
+          "nivel": 50,
+          "base": {
+            "hp": 75,
+            "mp": 80,
+            "atk": 70,
+            "def": 70,
+            "matk": 95,
+            "mdef": 85,
+            "spd": 110
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 2885,
+            "mp": 230,
+            "atk": 800,
+            "def": 800,
+            "matk": 1050,
+            "mdef": 950,
+            "spd": 1200
+          }
+        },
+        {
+          "id": "c_ahuizotl",
+          "nombre": "Ahuizotl",
+          "nivel": 50,
+          "base": {
+            "hp": 90,
+            "mp": 75,
+            "atk": 85,
+            "def": 80,
+            "matk": 90,
+            "mdef": 80,
+            "spd": 70
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 3141,
+            "mp": 225,
+            "atk": 950,
+            "def": 900,
+            "matk": 1000,
+            "mdef": 900,
+            "spd": 800
+          }
+        },
+        {
+          "id": "c_ceiba",
+          "nombre": "Ceibón",
+          "nivel": 50,
+          "base": {
+            "hp": 120,
+            "mp": 60,
+            "atk": 90,
+            "def": 110,
+            "matk": 70,
+            "mdef": 90,
+            "spd": 40
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 3596,
+            "mp": 210,
+            "atk": 1000,
+            "def": 1200,
+            "matk": 800,
+            "mdef": 1000,
+            "spd": 500
+          }
+        },
+        {
+          "id": "c_tlaloc",
+          "nombre": "Tlalocán",
+          "nivel": 50,
+          "base": {
+            "hp": 70,
+            "mp": 90,
+            "atk": 60,
+            "def": 65,
+            "matk": 115,
+            "mdef": 90,
+            "spd": 100
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 2794,
+            "mp": 240,
+            "atk": 700,
+            "def": 750,
+            "matk": 1250,
+            "mdef": 1000,
+            "spd": 1100
+          }
+        },
+        {
+          "id": "c_itzcuintli",
+          "nombre": "Itzcuintli",
+          "nivel": 50,
+          "base": {
+            "hp": 85,
+            "mp": 65,
+            "atk": 105,
+            "def": 75,
+            "matk": 70,
+            "mdef": 70,
+            "spd": 95
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 3058,
+            "mp": 215,
+            "atk": 1150,
+            "def": 850,
+            "matk": 800,
+            "mdef": 800,
+            "spd": 1050
+          }
+        },
+        {
+          "id": "c_tepeyolot",
+          "nombre": "Tepeyolotl",
+          "nivel": 50,
+          "base": {
+            "hp": 100,
+            "mp": 55,
+            "atk": 115,
+            "def": 100,
+            "matk": 55,
+            "mdef": 65,
+            "spd": 60
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 3300,
+            "mp": 205,
+            "atk": 1250,
+            "def": 1100,
+            "matk": 650,
+            "mdef": 750,
+            "spd": 700
+          }
+        },
+        {
+          "id": "c_ixtli",
+          "nombre": "Ixtlimetal",
+          "nivel": 50,
+          "base": {
+            "hp": 95,
+            "mp": 60,
+            "atk": 100,
+            "def": 120,
+            "matk": 60,
+            "mdef": 90,
+            "spd": 50
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 3222,
+            "mp": 210,
+            "atk": 1100,
+            "def": 1300,
+            "matk": 700,
+            "mdef": 1000,
+            "spd": 600
+          }
+        },
+        {
+          "id": "c_mictlan",
+          "nombre": "Mictlani",
+          "nivel": 50,
+          "base": {
+            "hp": 70,
+            "mp": 85,
+            "atk": 65,
+            "def": 70,
+            "matk": 100,
+            "mdef": 85,
+            "spd": 90
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 2794,
+            "mp": 235,
+            "atk": 750,
+            "def": 800,
+            "matk": 1100,
+            "mdef": 950,
+            "spd": 1000
+          }
+        },
+        {
+          "id": "c_itztli",
+          "nombre": "Itztli",
+          "nivel": 50,
+          "base": {
+            "hp": 75,
+            "mp": 75,
+            "atk": 85,
+            "def": 70,
+            "matk": 95,
+            "mdef": 75,
+            "spd": 105
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 2885,
+            "mp": 225,
+            "atk": 950,
+            "def": 800,
+            "matk": 1050,
+            "mdef": 850,
+            "spd": 1150
+          }
+        },
+        {
+          "id": "c_xochi",
+          "nombre": "Xochitl",
+          "nivel": 50,
+          "base": {
+            "hp": 100,
+            "mp": 95,
+            "atk": 55,
+            "def": 85,
+            "matk": 100,
+            "mdef": 110,
+            "spd": 60
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 3300,
+            "mp": 245,
+            "atk": 650,
+            "def": 950,
+            "matk": 1100,
+            "mdef": 1200,
+            "spd": 700
+          }
+        },
+        {
+          "id": "c_neutro",
+          "nombre": "Tlacuache",
+          "nivel": 50,
+          "base": {
+            "hp": 90,
+            "mp": 70,
+            "atk": 80,
+            "def": 80,
+            "matk": 80,
+            "mdef": 80,
+            "spd": 80
+          },
+          "ev": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "matk": 0,
+            "mdef": 0,
+            "spd": 0
+          },
+          "formulas": {
+            "hp": "((310 * B^0.5) + ((E / 8) * 25) * N / 100) + 100 + (N * 2)",
+            "mp": "B + N * 2 + 50",
+            "atk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "def": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "matk": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "mdef": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N",
+            "spd": "[((B * 2 / 5) + (E / 16)) / 2] * N + 50 + N"
+          },
+          "esperado": {
+            "hp": 3141,
+            "mp": 220,
+            "atk": 900,
+            "def": 900,
+            "matk": 900,
+            "mdef": 900,
+            "spd": 900
+          }
+        }
+      ]
+    },
+    {
+      "orden": "costes",
+      "casos": [
+        {
+          "id": "a_llamarada",
+          "ataque": "Llamarada",
+          "tipo": "Fuego",
+          "mp": 20,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 18,
+            "sin": 20
+          }
+        },
+        {
+          "id": "a_colmillo",
+          "ataque": "Colmillo ígneo",
+          "tipo": "Fuego",
+          "mp": 12,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 10,
+            "sin": 12
+          }
+        },
+        {
+          "id": "a_latigo",
+          "ataque": "Latigazo",
+          "tipo": "Planta",
+          "mp": 12,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 12,
+            "sin": 12
+          }
+        },
+        {
+          "id": "a_drenaje",
+          "ataque": "Drenaje vital",
+          "tipo": "Planta",
+          "mp": 14,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 14,
+            "sin": 14
+          }
+        },
+        {
+          "id": "a_hojas",
+          "ataque": "Lluvia de hojas",
+          "tipo": "Planta",
+          "mp": 18,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 18,
+            "sin": 18
+          }
+        },
+        {
+          "id": "a_chorro",
+          "ataque": "Chorro",
+          "tipo": "Agua",
+          "mp": 12,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 12,
+            "sin": 12
+          }
+        },
+        {
+          "id": "a_marea",
+          "ataque": "Marea",
+          "tipo": "Agua",
+          "mp": 22,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 22,
+            "sin": 22
+          }
+        },
+        {
+          "id": "a_rafaga",
+          "ataque": "Ráfaga",
+          "tipo": "Viento",
+          "mp": 8,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 7,
+            "sin": 8
+          }
+        },
+        {
+          "id": "a_tornado",
+          "ataque": "Tornado",
+          "tipo": "Viento",
+          "mp": 18,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 16,
+            "sin": 18
+          }
+        },
+        {
+          "id": "a_ventisca",
+          "ataque": "Ventisca",
+          "tipo": "Hielo",
+          "mp": 24,
+          "usuario": "c_tonatiuh",
+          "esperado": {
+            "con": 24,
+            "sin": 24
+          }
+        }
+      ]
+    },
+    {
+      "orden": "dano",
+      "casos": [
+        {
+          "semilla": "dano:0:1:a_llamarada",
+          "atacante": "c_tonatiuh",
+          "defensor": "c_quetzal",
+          "ataque": "a_llamarada",
+          "multiplicador": 1,
+          "critico": false,
+          "danio": 740,
+          "calculo": {
+            "t": 1,
+            "u": "Tonatiuh",
+            "g": "Quetzalín",
+            "m": "Llamarada",
+            "N": 50,
+            "pot": 90,
+            "fis": false,
+            "A": 1100,
+            "D": 950,
+            "crit": false,
+            "stab": true,
+            "bonus": 1.3,
+            "ty": 1,
+            "cw": 1,
+            "ci": 1,
+            "pr": 1,
+            "pw": 1.2,
+            "ab": 1,
+            "gd": 0,
+            "mult": 1,
+            "base": 474.4642764271,
+            "d": 740
+          }
+        },
+        {
+          "semilla": "dano:0:2:a_llamarada",
+          "atacante": "c_tonatiuh",
+          "defensor": "c_ahuizotl",
+          "ataque": "a_llamarada",
+          "multiplicador": 0.75,
+          "critico": false,
+          "danio": 285,
+          "calculo": {
+            "t": 1,
+            "u": "Tonatiuh",
+            "g": "Ahuizotl",
+            "m": "Llamarada",
+            "N": 50,
+            "pot": 90,
+            "fis": false,
+            "A": 1100,
+            "D": 900,
+            "crit": false,
+            "stab": true,
+            "bonus": 1.3,
+            "ty": 0.5,
+            "cw": 1,
+            "ci": 1,
+            "pr": 1,
+            "pw": 1.2,
+            "ab": 1,
+            "gd": 0,
+            "mult": 0.75,
+            "base": 487.4383025855,
+            "d": 285
+          }
+        },
+        {
+          "semilla": "dano:1:0:a_rafaga",
+          "atacante": "c_quetzal",
+          "defensor": "c_tonatiuh",
+          "ataque": "a_rafaga",
+          "multiplicador": 1,
+          "critico": false,
+          "danio": 246,
+          "calculo": {
+            "t": 1,
+            "u": "Quetzalín",
+            "g": "Tonatiuh",
+            "m": "Ráfaga",
+            "N": 50,
+            "pot": 60,
+            "fis": false,
+            "A": 1050,
+            "D": 800,
+            "crit": false,
+            "stab": true,
+            "bonus": 1.3,
+            "ty": 0.5,
+            "cw": 1,
+            "ci": 1,
+            "pr": 1,
+            "pw": 1,
+            "ab": 1,
+            "gd": 0,
+            "mult": 1,
+            "base": 379.0624948339,
+            "d": 246
+          }
+        },
+        {
+          "semilla": "dano:2:3:a_chorro",
+          "atacante": "c_ahuizotl",
+          "defensor": "c_ceiba",
+          "ataque": "a_chorro",
+          "multiplicador": 1,
+          "critico": true,
+          "danio": 661,
+          "calculo": {
+            "t": 1,
+            "u": "Ahuizotl",
+            "g": "Ceibón",
+            "m": "Chorro",
+            "N": 50,
+            "pot": 70,
+            "fis": false,
+            "A": 1000,
+            "D": 1000,
+            "crit": true,
+            "stab": true,
+            "bonus": 1.8,
+            "ty": 1,
+            "cw": 1,
+            "ci": 1,
+            "pr": 1,
+            "pw": 1,
+            "ab": 1,
+            "gd": 0,
+            "mult": 1,
+            "base": 367.6666666667,
+            "d": 661
+          }
+        },
+        {
+          "semilla": "dano:3:4:a_latigo",
+          "atacante": "c_ceiba",
+          "defensor": "c_tlaloc",
+          "ataque": "a_latigo",
+          "multiplicador": 1,
+          "critico": false,
+          "danio": 1103,
+          "calculo": {
+            "t": 1,
+            "u": "Ceibón",
+            "g": "Tlalocán",
+            "m": "Latigazo",
+            "N": 50,
+            "pot": 70,
+            "fis": true,
+            "A": 1000,
+            "D": 750,
+            "crit": false,
+            "stab": true,
+            "bonus": 1.3,
+            "ty": 2,
+            "cw": 1,
+            "ci": 1,
+            "pr": 1,
+            "pw": 1,
+            "ab": 1,
+            "gd": 0,
+            "mult": 1,
+            "base": 424.3901974057,
+            "d": 1103
+          }
+        },
+        {
+          "semilla": "dano:4:5:a_rayo",
+          "atacante": "c_tlaloc",
+          "defensor": "c_itzcuintli",
+          "ataque": "a_rayo",
+          "multiplicador": 0.75,
+          "critico": false,
+          "danio": 492,
+          "calculo": {
+            "t": 1,
+            "u": "Tlalocán",
+            "g": "Itzcuintli",
+            "m": "Rayo",
+            "N": 50,
+            "pot": 80,
+            "fis": false,
+            "A": 1250,
+            "D": 800,
+            "crit": false,
+            "stab": true,
+            "bonus": 1.3,
+            "ty": 1,
+            "cw": 1,
+            "ci": 1,
+            "pr": 1,
+            "pw": 1,
+            "ab": 1,
+            "gd": 0,
+            "mult": 0.75,
+            "base": 505.1666666667,
+            "d": 492
+          }
+        }
+      ]
+    },
+    {
+      "orden": "efectos",
+      "casos": [
+        {
+          "semilla": "efecto:boost",
+          "ataque": "a_danza",
+          "efecto": "boost",
+          "eventos": [
+            "  Tonatiuh: ATK +2 → nivel 2 (×1.5)",
+            "  Tonatiuh: SPD +1 → nivel 1 (×1.25)"
+          ],
+          "resultado": {
+            "atacante": {
+              "hp": 1783,
+              "mp": 220,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 2,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 1
+              },
+              "guards": []
+            },
+            "defensor": {
+              "hp": 2308,
+              "mp": 230,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            }
+          }
+        },
+        {
+          "semilla": "efecto:lifesteal",
+          "ataque": "a_drenaje",
+          "efecto": "lifesteal",
+          "eventos": [
+            "  Tonatiuh recupera 50 HP (robo de vida)"
+          ],
+          "resultado": {
+            "atacante": {
+              "hp": 1833,
+              "mp": 220,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            },
+            "defensor": {
+              "hp": 2308,
+              "mp": 230,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            }
+          }
+        },
+        {
+          "semilla": "efecto:mpsteal",
+          "ataque": "a_mordisco",
+          "efecto": "mpsteal",
+          "eventos": [
+            "  Tonatiuh roba 20 MP a Quetzalín"
+          ],
+          "resultado": {
+            "atacante": {
+              "hp": 1783,
+              "mp": 220,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            },
+            "defensor": {
+              "hp": 2308,
+              "mp": 210,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            }
+          }
+        },
+        {
+          "semilla": "efecto:status",
+          "ataque": "a_dardo",
+          "efecto": "status",
+          "eventos": [
+            "  Quetzalín sufre Intoxicación"
+          ],
+          "resultado": {
+            "atacante": {
+              "hp": 1783,
+              "mp": 220,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            },
+            "defensor": {
+              "hp": 2308,
+              "mp": 230,
+              "status": "Intoxicación",
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            }
+          }
+        },
+        {
+          "semilla": "efecto:trap",
+          "ataque": "a_burbuja",
+          "efecto": "trap",
+          "eventos": [
+            "  Quetzalín queda atrapado: no podrá retirarse durante 3 turnos"
+          ],
+          "resultado": {
+            "atacante": {
+              "hp": 1783,
+              "mp": 220,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            },
+            "defensor": {
+              "hp": 2308,
+              "mp": 230,
+              "status": null,
+              "trap": 3,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            }
+          }
+        },
+        {
+          "semilla": "efecto:recoil",
+          "ataque": "a_acero",
+          "efecto": "recoil",
+          "eventos": [
+            "  Tonatiuh pierde 25 HP (1758/2973) (retroceso)"
+          ],
+          "resultado": {
+            "atacante": {
+              "hp": 1758,
+              "mp": 220,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            },
+            "defensor": {
+              "hp": 2308,
+              "mp": 230,
+              "status": null,
+              "trap": 0,
+              "bo": {
+                "HP": 0,
+                "ATK": 0,
+                "DEF": 0,
+                "MATK": 0,
+                "MDEF": 0,
+                "SPD": 0
+              },
+              "guards": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "orden": "repeticiones",
+      "casos": [
+        {
+          "semilla": "repeticion-v5",
+          "equipos": [
+            [
+              "c_tonatiuh",
+              "c_quetzal"
+            ],
+            [
+              "c_ceiba",
+              "c_tlaloc"
+            ]
+          ],
+          "acciones": [
+            [
+              [
+                {
+                  "t": "atk",
+                  "m": "a_llamarada",
+                  "tg": "1:0"
+                },
+                {
+                  "t": "atk",
+                  "m": "a_rafaga",
+                  "tg": "1:0"
+                }
+              ],
+              [
+                {
+                  "t": "atk",
+                  "m": "a_latigo",
+                  "tg": "0:0"
+                },
+                {
+                  "t": "pr"
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "t": "atk",
+                  "m": "a_colmillo",
+                  "tg": "1:0"
+                },
+                {
+                  "t": "atk",
+                  "m": "a_luz",
+                  "tg": "1:0"
+                }
+              ],
+              [
+                {
+                  "t": "atk",
+                  "m": "a_drenaje",
+                  "tg": "0:0"
+                },
+                {
+                  "t": "atk",
+                  "m": "a_chispa",
+                  "tg": "0:0"
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "t": "atk",
+                  "m": "a_danza",
+                  "tg": "1:0"
+                },
+                {
+                  "t": "atk",
+                  "m": "a_aliento",
+                  "tg": "1:0"
+                }
+              ],
+              [
+                {
+                  "t": "atk",
+                  "m": "a_raices",
+                  "tg": "0:0"
+                },
+                {
+                  "t": "atk",
+                  "m": "a_carga",
+                  "tg": "0:0"
+                }
+              ]
+            ]
+          ],
+          "turnos": [
+            {
+              "n": 1,
+              "eventos": [
+                "— Turno 1 —",
+                "Orden: Tlalocán (Equipo B, prio +4, SPD 1100) → Quetzalín (Equipo A, prio +2, SPD 1200) → Tonatiuh (Equipo A, prio +0, SPD 1050) → Ceibón (Equipo B, prio +0, SPD 500)",
+                "Tlalocán se pone en guardia (nivel 1: −90% de daño recibido)",
+                "Quetzalín (Equipo A) usa Ráfaga [Viento · Daño Mágico · 7 MP (−10% por STAB)]",
+                "  Cálculo Ceibón: base 339.1 [((50+5)·√(1050/1000)·(60+30))/15+1] × bonus 1.3 (STAB +30%) × tipo 4 × clima 1 × objeto 1.00 = 1763 (¡Súper eficaz!)",
+                "  ¡Es súper eficaz!",
+                "  Ceibón pierde 1763 HP (1833/3596)",
+                "Tonatiuh (Equipo A) usa Llamarada [Fuego · Daño Mágico · 18 MP (−10% por STAB)]",
+                "  Cálculo Ceibón: base 462.5 [((50+5)·√(1100/1000)·(90+30))/15+1] × bonus 1.3 (STAB +30%) × tipo 1 × clima 1 × objeto 1.00 × habilidad 1.2 = 721",
+                "  Ceibón pierde 721 HP (1112/3596)",
+                "Ceibón (Equipo B) usa Latigazo [Planta · Daño Físico contacto · 10 MP (−10% por STAB)]",
+                "  Cálculo Tonatiuh: base 424.4 [((50+5)·√(1000/750)·(70+30))/15+1] × bonus 1.3 (STAB +30%) × tipo 0.25 × clima 1 × objeto 1.00 = 137 (Poco eficaz)",
+                "  No es muy eficaz…",
+                "  Tonatiuh pierde 137 HP (2836/2973)"
+              ],
+              "estado": {
+                "n": 1,
+                "w": "",
+                "a": [
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "u": [
+                  [
+                    {
+                      "hp": 2836,
+                      "mx": 2973,
+                      "mp": 202,
+                      "mm": 220,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    },
+                    {
+                      "hp": 2885,
+                      "mx": 2885,
+                      "mp": 223,
+                      "mm": 230,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    }
+                  ],
+                  [
+                    {
+                      "hp": 1112,
+                      "mx": 3596,
+                      "mp": 200,
+                      "mm": 210,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    },
+                    {
+                      "hp": 2794,
+                      "mx": 2794,
+                      "mp": 240,
+                      "mm": 240,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 1,
+                      "cd": 0,
+                      "pr": true,
+                      "rc": false
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "n": 2,
+              "eventos": [
+                "— Turno 2 —",
+                "Orden: Tlalocán (Equipo B, prio +1, SPD 1100) → Quetzalín (Equipo A, prio +0, SPD 1200) → Tonatiuh (Equipo A, prio +0, SPD 1050) → Ceibón (Equipo B, prio +0, SPD 500)",
+                "Tlalocán (Equipo B) usa Chispa [Eléctrico · Daño Físico contacto · 5 MP (−10% por STAB)]",
+                "  Cálculo Tonatiuh: base 249.0 [((50+5)·√(700/750)·(40+30))/15+1] × bonus 1.3 (STAB +30%) × tipo 2 × clima 1 × objeto 1.00 = 647 (¡Súper eficaz!)",
+                "  ¡Es súper eficaz!",
+                "  Tonatiuh pierde 647 HP (2189/2973)",
+                "Quetzalín (Equipo A) usa Rayo sagrado [Sagrado · Daño Mágico · 14 MP (−10% por STAB)]",
+                "  Cálculo Ceibón: base 395.5 [((50+5)·√(1050/1000)·(75+30))/15+1] × bonus 1.3 (STAB +30%) × tipo 1 × clima 1 × objeto 1.00 = 514",
+                "  Ceibón pierde 514 HP (598/3596)",
+                "  Quetzalín recupera 128 HP (robo de vida)",
+                "Tonatiuh (Equipo A) usa Colmillo ígneo [Fuego · Daño Físico contacto · 10 MP (−10% por STAB)]",
+                "  Cálculo Ceibón: base 302.7 [((50+5)·√(900/1200)·(65+30))/15+1] × bonus 1.3 (STAB +30%) × tipo 1 × clima 1 × objeto 1.00 × habilidad 1.2 = 472",
+                "  Ceibón pierde 472 HP (126/3596)",
+                "  Tonatiuh pierde 118 HP (2071/2973) (daño devuelto por Ceibón)",
+                "  (Estado alterado 30%: no se activa)",
+                "Ceibón (Equipo B) usa Drenaje vital [Planta · Daño Mágico · 12 MP (−10% por STAB)]",
+                "  Cálculo Tonatiuh: base 331.0 [((50+5)·√(800/800)·(60+30))/15+1] × bonus 1.3 (STAB +30%) × tipo 0.25 × clima 1 × objeto 1.00 = 107 (Poco eficaz)",
+                "  No es muy eficaz…",
+                "  Tonatiuh pierde 107 HP (1964/2973)",
+                "  Ceibón recupera 53 HP (robo de vida)"
+              ],
+              "estado": {
+                "n": 2,
+                "w": "",
+                "a": [
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "u": [
+                  [
+                    {
+                      "hp": 1964,
+                      "mx": 2973,
+                      "mp": 192,
+                      "mm": 220,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    },
+                    {
+                      "hp": 2885,
+                      "mx": 2885,
+                      "mp": 209,
+                      "mm": 230,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    }
+                  ],
+                  [
+                    {
+                      "hp": 179,
+                      "mx": 3596,
+                      "mp": 188,
+                      "mm": 210,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    },
+                    {
+                      "hp": 2794,
+                      "mx": 2794,
+                      "mp": 235,
+                      "mm": 240,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 1,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "n": 3,
+              "eventos": [
+                "— Turno 3 —",
+                "Orden: Quetzalín (Equipo A, prio +0, SPD 1200) → Tlalocán (Equipo B, prio +0, SPD 1100) → Tonatiuh (Equipo A, prio +0, SPD 1050) → Ceibón (Equipo B, prio +0, SPD 500)",
+                "Quetzalín (Equipo A) usa Aliento aliado [Viento · Estado · 9 MP (−10% por STAB)]",
+                "  Tonatiuh: SPD +2 → nivel 2 (×1.5)",
+                "Tlalocán (Equipo B) usa Carga [Eléctrico · Estado · 9 MP (−10% por STAB)]",
+                "  Tlalocán: MATK +2 → nivel 2 (×1.5)",
+                "  Tlalocán: SPD +1 → nivel 1 (×1.25)",
+                "Tonatiuh (Equipo A) usa Danza de fuego [Fuego · Estado · 9 MP (−10% por STAB)]",
+                "  Tonatiuh: ATK +2 → nivel 2 (×1.5)",
+                "  Tonatiuh: SPD +1 → nivel 3 (×1.75)",
+                "Ceibón (Equipo B) usa Raíces atrapantes [Planta · Estado · 10 MP (−10% por STAB)]",
+                "  Tonatiuh queda atrapado: no podrá retirarse durante 4 turnos"
+              ],
+              "estado": {
+                "n": 3,
+                "w": "",
+                "a": [
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    0,
+                    1
+                  ]
+                ],
+                "u": [
+                  [
+                    {
+                      "hp": 1964,
+                      "mx": 2973,
+                      "mp": 183,
+                      "mm": 220,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 2,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 3
+                      },
+                      "tr": 4,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    },
+                    {
+                      "hp": 2885,
+                      "mx": 2885,
+                      "mp": 200,
+                      "mm": 230,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    }
+                  ],
+                  [
+                    {
+                      "hp": 179,
+                      "mx": 3596,
+                      "mp": 178,
+                      "mm": 210,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 0,
+                        "MDEF": 0,
+                        "SPD": 0
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    },
+                    {
+                      "hp": 2794,
+                      "mx": 2794,
+                      "mp": 226,
+                      "mm": 240,
+                      "ko": false,
+                      "st": null,
+                      "bo": {
+                        "HP": 0,
+                        "ATK": 0,
+                        "DEF": 0,
+                        "MATK": 2,
+                        "MDEF": 0,
+                        "SPD": 1
+                      },
+                      "tr": 0,
+                      "gc": 0,
+                      "cd": 0,
+                      "pr": false,
+                      "rc": false
+                    }
+                  ]
+                ]
+              }
+            }
+          ],
+          "final": {
+            "over": false,
+            "n": 3
+          }
+        }
+      ]
+    }
+  ]
+}
