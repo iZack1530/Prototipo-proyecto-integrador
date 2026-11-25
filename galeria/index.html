@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a17">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <meta name="description" content="Explora el archivo ilustrado de Horizon Mythos: criaturas, personajes, escenarios e interfaz.">
+  <title>Galería de arte conceptual — Horizon Mythos</title>
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/tema.css">
+  <link rel="stylesheet" href="../assets/css/componentes.css">
+  <link rel="stylesheet" href="./galeria.css">
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+  <header class="cabecera galeria-cabecera">
+    <a class="marca" href="../index.html" aria-label="Horizon Mythos, inicio">
+      <span class="marca-simbolo" aria-hidden="true">H</span>
+      <span class="marca-texto">Horizon <span>Mythos</span></span>
+    </a>
+    <nav class="navegacion" aria-label="Navegación principal">
+      <a href="../index.html">Inicio</a>
+      <a href="../bestiario/">Bestiario</a>
+      <a class="enlace-laboratorio" href="../laboratorio/">Laboratorio <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="galeria-portada" aria-labelledby="titulo-galeria">
+      <div class="galeria-portada-texto">
+        <p class="sobretitulo"><span></span> Archivo visual · Auralia</p>
+        <h1 id="titulo-galeria">Un mundo<br>en <em>fragmentos.</em></h1>
+      </div>
+      <div class="galeria-portada-nota">
+        <p>Un cuaderno abierto de criaturas, lugares e ideas que dan forma al horizonte.</p>
+        <span class="folio-galeria">ESTUDIO 01 — 06</span>
+      </div>
+      <div class="galeria-portada-regla" aria-hidden="true"></div>
+    </section>
+
+    <section class="archivo-galeria" aria-labelledby="titulo-archivo">
+      <div class="archivo-cabecera">
+        <div>
+          <p class="sobretitulo">Selección de arte conceptual</p>
+          <h2 id="titulo-archivo">El archivo</h2>
+        </div>
+        <p class="archivo-contador" id="contador-obras" aria-live="polite">Cargando obras…</p>
+      </div>
+
+      <div class="filtros-galeria">
+        <div class="grupo-filtros">
+          <span class="rotulo-filtros" id="rotulo-categorias">Categoría</span>
+          <div class="lista-filtros" id="filtros-categoria" role="group" aria-labelledby="rotulo-categorias">
+            <button type="button" class="filtro-boton activo" data-categoria="todas" aria-pressed="true">Todo</button>
+            <button type="button" class="filtro-boton" data-categoria="criaturas" aria-pressed="false">Criaturas</button>
+            <button type="button" class="filtro-boton" data-categoria="personajes" aria-pressed="false">Personajes</button>
+            <button type="button" class="filtro-boton" data-categoria="escenarios" aria-pressed="false">Escenarios</button>
+            <button type="button" class="filtro-boton" data-categoria="interfaz" aria-pressed="false">Interfaz</button>
+          </div>
+        </div>
+        <div class="grupo-filtros grupo-etiquetas">
+          <span class="rotulo-filtros" id="rotulo-etiquetas">Explorar por etiqueta</span>
+          <div class="lista-etiquetas" id="filtros-etiqueta" role="group" aria-labelledby="rotulo-etiquetas">
+            <button type="button" class="etiqueta-boton activa" data-etiqueta="todas" aria-pressed="true">Todas</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="estado-galeria" id="estado-galeria" role="status" aria-live="polite"></p>
+      <div class="rejilla-galeria" id="galeria-obras" aria-label="Obras de la galería"></div>
+    </section>
+  </main>
+
+  <footer class="pie pie-galeria">
+    <a class="marca marca-pie" href="../index.html">
+      <span class="marca-simbolo" aria-hidden="true">H</span>
+      <span class="marca-texto">Horizon <span>Mythos</span></span>
+    </a>
+    <p>Un horizonte nuevo en cada encuentro.</p>
+    <a href="../index.html">Volver al inicio <span aria-hidden="true">↗</span></a>
+  </footer>
+
+  <dialog class="visor" id="visor" aria-label="Visor de arte conceptual">
+    <div class="visor-marco">
+      <header class="visor-cabecera">
+        <a class="marca marca-visor" href="../index.html" aria-label="Horizon Mythos, inicio">
+          <span class="marca-simbolo" aria-hidden="true">H</span>
+          <span class="marca-texto">Horizon <span>Mythos</span></span>
+        </a>
+        <div class="visor-controles" aria-label="Controles del visor">
+          <button type="button" class="control-visor" id="alejar" aria-label="Alejar imagen">−</button>
+          <span class="visor-zoom" id="nivel-zoom" aria-live="polite">100%</span>
+          <button type="button" class="control-visor" id="acercar" aria-label="Acercar imagen">+</button>
+          <button type="button" class="control-visor control-restablecer" id="restablecer-zoom" aria-label="Restablecer zoom">↺</button>
+          <button type="button" class="control-visor control-cerrar" id="cerrar-visor" aria-label="Cerrar visor">Cerrar <span aria-hidden="true">×</span></button>
+        </div>
+      </header>
+      <div class="visor-cuerpo">
+        <div class="visor-escenario" id="visor-escenario">
+          <button type="button" class="visor-flecha anterior" id="obra-anterior" aria-label="Obra anterior">←</button>
+          <img class="visor-imagen" id="visor-imagen" alt="">
+          <button type="button" class="visor-flecha siguiente" id="obra-siguiente" aria-label="Obra siguiente">→</button>
+        </div>
+        <aside class="visor-ficha" aria-live="polite">
+          <p class="visor-indice" id="visor-indice"></p>
+          <p class="visor-categoria" id="visor-categoria"></p>
+          <h2 id="visor-titulo"></h2>
+          <p class="visor-descripcion" id="visor-descripcion"></p>
+          <dl class="datos-obra">
+            <div><dt>Artista</dt><dd id="visor-artista"></dd></div>
+            <div><dt>Fecha</dt><dd id="visor-fecha"></dd></div>
+            <div><dt>Criatura relacionada</dt><dd id="visor-criatura"></dd></div>
+          </dl>
+          <p class="ayuda-teclado">← → para recorrer · Esc para cerrar</p>
+        </aside>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="../assets/js/galeria/galeria.js"></script>
+</body>
+</html>

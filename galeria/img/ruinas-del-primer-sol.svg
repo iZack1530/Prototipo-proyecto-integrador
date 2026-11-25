@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" fill="none">
+  <title>Ruinas del primer sol</title>
+  <defs>
+    <linearGradient id="cielo" x1="162" y1="0" x2="738" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#344439"/>
+      <stop offset=".55" stop-color="#a27c54"/>
+      <stop offset="1" stop-color="#e0b978"/>
+    </linearGradient>
+    <linearGradient id="piedra" x1="449" y1="294" x2="450" y2="613" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#bda27a"/>
+      <stop offset="1" stop-color="#4a5140"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#cielo)" d="M0 0h900v680H0z"/>
+  <circle cx="660" cy="223" r="113" fill="#f0d093" fill-opacity=".83"/>
+  <circle cx="660" cy="223" r="150" stroke="#f4dfb1" stroke-opacity=".35"/>
+  <path d="m0 439 157-98 109 70 132-148 124 144 129-115 119 83 130-90v395H0z" fill="#66745d"/>
+  <path d="m0 525 151-79 124 67 146-93 138 88 116-83 121 90 104-56v221H0z" fill="#384f3e"/>
+  <path d="M179 584h543l-39-48H218zm50-48h443l-40-47H269zm47-47h348l-34-45H313zm52-45h244l-31-42H360zm66-42h112l-20-45h-72z" fill="url(#piedra)"/>
+  <path d="M375 584v-31h36v31m80 0v-31h36v31m-188-95v-28h34v28m79 0v-28h34v28m77 0v-28h34v28m-149-90v-25h31v25m67 0v-25h31v25" stroke="#354235" stroke-width="4"/>
+  <path d="M0 612h900v68H0z" fill="#1e3026"/>
+  <path d="m95 590 48-30m618 28 45-27" stroke="#d7a85f" stroke-width="3"/>
+  <path d="M30 30h840v620H30z" stroke="#f0d093" stroke-opacity=".3" stroke-width="2"/>
+</svg>
