@@ -1,14 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Laboratorio RPG</title>
-<meta name="description" content="Diseño y pruebas de un RPG por turnos 3v3: criaturas, combate, tipos y equilibrio.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a17">
+  <title>Horizon Mythos — Donde nacen las leyendas</title>
+  <meta name="description" content="Descubre Horizon Mythos: un mundo de criaturas, estrategia y combates por turnos.">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/tema.css">
+  <link rel="stylesheet" href="assets/css/componentes.css">
 </head>
 <body>
-<h1>Laboratorio RPG</h1>
-<p>Diseño y pruebas de un RPG por turnos 3v3: criaturas, combate, tipos y equilibrio.</p>
-<p><a href="/laboratorio/">Abrir el Laboratorio</a></p>
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+  <header class="cabecera">
+    <a class="marca" href="./" aria-label="Horizon Mythos, inicio">
+      <span class="marca-simbolo" aria-hidden="true">H</span>
+      <span class="marca-texto">Horizon <span>Mythos</span></span>
+    </a>
+    <nav class="navegacion" aria-label="Navegación principal">
+      <a href="#caracteristicas">Características</a>
+      <a href="#mundo">El mundo</a>
+      <a href="#equipo">El equipo</a>
+      <a class="enlace-laboratorio" href="laboratorio/">Laboratorio <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="portada" aria-labelledby="titulo-principal">
+      <div class="portada-contenido">
+        <p class="sobretitulo"><span></span> Un mundo por descubrir</p>
+        <h1 id="titulo-principal">Donde nacen<br>las <em>leyendas.</em></h1>
+        <p class="portada-descripcion">Forja vínculos. Domina los elementos. Escribe tu propia historia en un universo de criaturas extraordinarias.</p>
+        <div class="portada-acciones">
+          <a class="boton boton-principal" href="jugar/">Jugar combate <span aria-hidden="true">→</span></a>
+          <a class="enlace-secundario" href="#mundo">Explorar el mundo <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="nota-portada"><span aria-hidden="true">✦</span> Estrategia por turnos · Aventuras sin límites</p>
+      </div>
+      <figure class="portada-arte">
+        <img src="assets/img/horizonte-mitico.svg" alt="" width="1200" height="800">
+        <figcaption><span>01 / 04</span> Los confines de Auralia</figcaption>
+      </figure>
+      <div class="portada-folio" aria-hidden="true">HM — MMXXVI</div>
+    </section>
+
+    <section class="criaturas seccion" aria-labelledby="titulo-criaturas">
+      <div class="encabezado-seccion">
+        <div>
+          <p class="sobretitulo">Encuentra tu leyenda</p>
+          <h2 id="titulo-criaturas">Criaturas del horizonte</h2>
+        </div>
+        <span class="contador-criaturas">01 — 03</span>
+      </div>
+      <div class="rejilla-criaturas">
+        <article class="tarjeta-criatura criatura-solar">
+          <div class="criatura-emblema" aria-hidden="true"><span>✺</span></div>
+          <div class="criatura-detalle"><span class="etiqueta">Fuego · Viento</span><h3>Tonatiuh</h3><p>El alba cobra forma en sus alas encendidas.</p></div>
+          <span class="numero-tarjeta" aria-hidden="true">01</span>
+        </article>
+        <article class="tarjeta-criatura criatura-celeste">
+          <div class="criatura-emblema" aria-hidden="true"><span>◈</span></div>
+          <div class="criatura-detalle"><span class="etiqueta">Viento · Sagrado</span><h3>Quetzalín</h3><p>Una corriente antigua que nunca deja de volar.</p></div>
+          <span class="numero-tarjeta" aria-hidden="true">02</span>
+        </article>
+        <article class="tarjeta-criatura criatura-abismo">
+          <div class="criatura-emblema" aria-hidden="true"><span>≈</span></div>
+          <div class="criatura-detalle"><span class="etiqueta">Agua · Oscuro</span><h3>Ahuizotl</h3><p>Guardián de los secretos bajo la superficie.</p></div>
+          <span class="numero-tarjeta" aria-hidden="true">03</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="caracteristicas seccion" id="caracteristicas" aria-labelledby="titulo-caracteristicas">
+      <div class="encabezado-seccion">
+        <div>
+          <p class="sobretitulo">Un mundo, muchas estrategias</p>
+          <h2 id="titulo-caracteristicas">Cada decisión<br>cuenta.</h2>
+        </div>
+        <p class="introduccion">Prepara a tu equipo y encuentra tu propio ritmo. En Horizon Mythos, cada encuentro abre una nueva posibilidad.</p>
+      </div>
+      <div class="rejilla-caracteristicas">
+        <article class="caracteristica">
+          <span class="icono-caracteristica" aria-hidden="true">⌘</span>
+          <span class="indice-caracteristica">01 / TÁCTICA</span>
+          <h3>Combates con intención</h3>
+          <p>Lee el terreno, combina afinidades y convierte cada turno en una oportunidad.</p>
+        </article>
+        <article class="caracteristica">
+          <span class="icono-caracteristica" aria-hidden="true">✧</span>
+          <span class="indice-caracteristica">02 / VÍNCULO</span>
+          <h3>Un equipo a tu manera</h3>
+          <p>Conoce criaturas singulares y descubre cómo sus habilidades se complementan.</p>
+        </article>
+        <article class="caracteristica">
+          <span class="icono-caracteristica" aria-hidden="true">◎</span>
+          <span class="indice-caracteristica">03 / DESCUBRIMIENTO</span>
+          <h3>Historias en el camino</h3>
+          <p>Explora paisajes con memoria, leyendas antiguas y nuevos horizontes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mundo" id="mundo" aria-labelledby="titulo-mundo">
+      <div class="mundo-texto">
+        <p class="sobretitulo">Más allá de lo conocido</p>
+        <h2 id="titulo-mundo">El mundo<br>te está <em>llamando.</em></h2>
+        <p>Auralia se extiende entre selvas de piedra, mares luminosos y cumbres que rozan las nubes. Cada territorio guarda su propio pulso y criaturas que esperan ser encontradas.</p>
+        <a class="enlace-secundario enlace-claro" href="laboratorio/">Conoce el Laboratorio <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="mundo-sello" aria-hidden="true">
+        <span class="sello-anillo">HORIZON MYTHOS · AURALIA · HORIZON MYTHOS · AURALIA ·</span>
+        <span class="sello-centro">✳</span>
+      </div>
+      <span class="mundo-coordenadas" aria-hidden="true">18° 32' N&nbsp; / &nbsp;93° 04' O</span>
+    </section>
+
+    <section class="equipo seccion" id="equipo" aria-labelledby="titulo-equipo">
+      <p class="sobretitulo">Creado con curiosidad</p>
+      <div class="equipo-contenido">
+        <h2 id="titulo-equipo">Un proyecto hecho<br>para <em>imaginar.</em></h2>
+        <div class="equipo-texto">
+          <p>Horizon Mythos es un proyecto independiente que une diseño de criaturas, estrategia y construcción de mundos. Una aventura que crece con cada idea compartida.</p>
+          <a class="boton boton-contorno" href="laboratorio/">Explorar el proyecto <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="equipo-firma"><span>H</span><span>IMAGINADO CON CUIDADO · HECHO PARA EXPLORAR</span><span>2026</span></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <a class="marca marca-pie" href="./">
+      <span class="marca-simbolo" aria-hidden="true">H</span>
+      <span class="marca-texto">Horizon <span>Mythos</span></span>
+    </a>
+    <p>Un horizonte nuevo en cada encuentro.</p>
+    <a href="laboratorio/">Abrir Laboratorio <span aria-hidden="true">↗</span></a>
+  </footer>
 </body>
 </html>
