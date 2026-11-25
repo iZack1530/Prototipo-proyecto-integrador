@@ -134,6 +134,17 @@ namespace HorizonMythos.Nucleo.Combate
             return captura;
         }
 
+        /// <summary>
+        /// Libera los registros acumulados. Lo usa el simulador entre turnos para mantener
+        /// el consumo de memoria constante cuando se encadenan miles de combates.
+        /// </summary>
+        public void LimpiarRegistros()
+        {
+            _historial.Clear();
+            _calculos.Clear();
+            _accionesGrabadas.Clear();
+        }
+
         public EstadoCombate ObtenerEstado()
         {
             var activos = new int[2][];
