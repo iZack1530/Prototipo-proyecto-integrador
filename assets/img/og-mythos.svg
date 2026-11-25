@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111a17"/>
+      <stop offset=".62" stop-color="#26382e"/>
+      <stop offset="1" stop-color="#71503d"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="matrix(0 300 -300 0 886 298)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#edc785" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#edc785" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="alas" x1="790" y1="130" x2="1009" y2="502" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0d39a"/>
+      <stop offset=".55" stop-color="#c88a58"/>
+      <stop offset="1" stop-color="#684b3a"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#fondo)" d="M0 0h1200v630H0z"/>
+  <circle cx="886" cy="298" r="300" fill="url(#halo)"/>
+  <circle cx="886" cy="285" r="139" fill="#edc785" fill-opacity=".92"/>
+  <circle cx="886" cy="285" r="164" stroke="#f8e4b7" stroke-opacity=".38"/>
+  <circle cx="886" cy="285" r="195" stroke="#edc785" stroke-opacity=".18"/>
+  <g fill="#f3e5c4" fill-opacity=".78">
+    <circle cx="698" cy="90" r="2"/><circle cx="745" cy="201" r="1.5"/><circle cx="1067" cy="93" r="2"/>
+    <circle cx="1114" cy="222" r="1.5"/><circle cx="1014" cy="410" r="1.5"/><circle cx="799" cy="475" r="2"/>
+    <circle cx="552" cy="138" r="1.5"/>
+  </g>
+  <path fill="#263a30" d="m548 481 102-92 83 44 106-114 80 81 96-105 185 116v219H548z"/>
+  <path fill="#18271f" d="m516 539 147-77 89 36 130-106 102 73 111-84 105 53v196H516z"/>
+  <path fill="#111a17" d="m520 582 135-45 103 34 134-54 123 49 115-35 168 48v51H520z"/>
+  <g transform="translate(786 117)">
+    <path d="M175 163c51-57 68-103 46-139-33 41-70 58-112 54-34-4-61-26-82-66-14 61 3 104 51 128-23 4-43 13-60 26 38 15 61 37 69 65 8 26-1 51-25 76 64-3 101-31 111-86 15 17 34 27 58 31-1-37-19-66-56-89Z" fill="url(#alas)"/>
+    <path d="M112 137c-30-35-47-72-50-110 27 25 59 40 94 43m19 98c37-19 67-48 91-86-8 51-27 91-58 120" stroke="#f5e1b4" stroke-opacity=".78" stroke-width="4"/>
+    <path d="m141 204 17 70 24-73m-44 32-36 51m80-38 49 35" stroke="#332c25" stroke-width="4" stroke-linecap="round"/>
+    <path d="m145 151 15 9-15 10-12-9z" fill="#fff0cb"/>
+  </g>
+  <g transform="translate(78 78)">
+    <circle cx="22" cy="22" r="21" stroke="#d7a85f"/>
+    <path d="M29 9H19a9 9 0 0 0-9 9v9a9 9 0 0 0 9 9h10v-6H19a3 3 0 0 1-3-3v-2h10v-6H16v-1a3 3 0 0 1 3-3h10z" fill="#f0eee4" transform="translate(1 0)"/>
+    <text x="58" y="27" fill="#f0eee4" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">HORIZON MYTHOS</text>
+  </g>
+  <g transform="translate(82 242)">
+    <text fill="#d7a85f" font-family="Arial, sans-serif" font-size="15" font-weight="600" letter-spacing="4">UN MUNDO POR DESCUBRIR</text>
+    <text y="91" fill="#f0eee4" font-family="Georgia, 'Times New Roman', serif" font-size="70" letter-spacing="-3">Donde nacen</text>
+    <text y="170" fill="#edc785" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-style="italic" letter-spacing="-3">las leyendas.</text>
+    <path d="M0 207h370" stroke="#f0eee4" stroke-opacity=".25"/>
+    <text y="244" fill="#d2d7cd" font-family="Arial, sans-serif" font-size="18">Criaturas extraordinarias · Estrategia · Aventura</text>
+  </g>
+  <path d="M26 26h1148v578H26z" stroke="#edc785" stroke-opacity=".24" stroke-width="2"/>
+</svg>

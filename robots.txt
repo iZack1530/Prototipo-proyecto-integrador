@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /laboratorio/
+Disallow: /Prototipo-proyecto-integrador/laboratorio/
+
+Sitemap: https://izack1530.github.io/Prototipo-proyecto-integrador/sitemap.xml
