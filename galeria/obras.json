@@ -1,0 +1,74 @@
+[
+  {
+    "id": "tonatiuh",
+    "titulo": "Tonatiuh, ave solar",
+    "categoria": "criaturas",
+    "etiquetas": ["fuego", "viento", "amanecer"],
+    "artista": "Equipo de arte conceptual",
+    "fecha": "2026-08-12",
+    "descripcion": "Mensajero del alba. Sus plumas guardan el calor de la primera luz y trazan rutas doradas sobre las montañas.",
+    "criatura-relacionada": "Tonatiuh",
+    "imagen": "img/tonatiuh.svg",
+    "texto-alternativo": "Ave fantástica de plumaje ocre que despliega sus alas frente a un sol naciente."
+  },
+  {
+    "id": "quetzalin",
+    "titulo": "Quetzalín, vigía celeste",
+    "categoria": "criaturas",
+    "etiquetas": ["viento", "cielo", "sagrado"],
+    "artista": "Equipo de arte conceptual",
+    "fecha": "2026-08-19",
+    "descripcion": "Una criatura de las corrientes altas. El patrón de sus alas recuerda mapas que solo aparecen entre las nubes.",
+    "criatura-relacionada": "Quetzalín",
+    "imagen": "img/quetzalin.svg",
+    "texto-alternativo": "Criatura alada turquesa suspendida entre nubes y anillos de viento."
+  },
+  {
+    "id": "cartografa-del-viento",
+    "titulo": "Liria, cartógrafa del viento",
+    "categoria": "personajes",
+    "etiquetas": ["personajes", "mapas", "viaje"],
+    "artista": "Equipo de arte conceptual",
+    "fecha": "2026-09-03",
+    "descripcion": "Exploradora de rutas invisibles. Liria dibuja los caminos que el viento deja sobre el polvo de jade.",
+    "criatura-relacionada": "Quetzalín",
+    "imagen": "img/cartografa-del-viento.svg",
+    "texto-alternativo": "Cartógrafa con capa verde que consulta un mapa frente a montañas lejanas."
+  },
+  {
+    "id": "ruinas-del-primer-sol",
+    "titulo": "Ruinas del primer sol",
+    "categoria": "escenarios",
+    "etiquetas": ["ruinas", "amanecer", "piedra"],
+    "artista": "Equipo de arte conceptual",
+    "fecha": "2026-09-17",
+    "descripcion": "Una antigua escalinata mira al este. Cada mañana, la piedra recoge un filo de luz antes que el valle.",
+    "criatura-relacionada": "Tonatiuh",
+    "imagen": "img/ruinas-del-primer-sol.svg",
+    "texto-alternativo": "Templo escalonado de piedra bajo un gran sol y montañas en tonos verdes."
+  },
+  {
+    "id": "umbral-de-jade",
+    "titulo": "El umbral de jade",
+    "categoria": "escenarios",
+    "etiquetas": ["selva", "agua", "ruinas"],
+    "artista": "Equipo de arte conceptual",
+    "fecha": "2026-10-02",
+    "descripcion": "Un arco cubierto de hojas marca la entrada a un santuario junto al río. El agua parece guardar un secreto.",
+    "criatura-relacionada": "Ahuizotl",
+    "imagen": "img/umbral-de-jade.svg",
+    "texto-alternativo": "Arco antiguo cubierto de vegetación junto a una corriente de agua azul."
+  },
+  {
+    "id": "matriz-de-afinidades",
+    "titulo": "Matriz de afinidades",
+    "categoria": "interfaz",
+    "etiquetas": ["interfaz", "elementos", "estrategia"],
+    "artista": "Equipo de arte conceptual",
+    "fecha": "2026-10-21",
+    "descripcion": "Estudio visual de las fuerzas que se encuentran en cada combate: equilibrio, contraste y oportunidad.",
+    "criatura-relacionada": "Sin relación directa",
+    "imagen": "img/matriz-de-afinidades.svg",
+    "texto-alternativo": "Diagrama circular de afinidades elementales conectado por líneas doradas."
+  }
+]

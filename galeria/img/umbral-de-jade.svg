@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" fill="none">
+  <title>El umbral de jade</title>
+  <defs>
+    <linearGradient id="selva" x1="0" y1="0" x2="900" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1b3429"/>
+      <stop offset=".58" stop-color="#476b50"/>
+      <stop offset="1" stop-color="#9a9b69"/>
+    </linearGradient>
+    <linearGradient id="agua" x1="450" y1="390" x2="450" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#81aaa0"/>
+      <stop offset="1" stop-color="#244b46"/>
+    </linearGradient>
+    <linearGradient id="arco" x1="324" y1="163" x2="579" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c6b487"/>
+      <stop offset="1" stop-color="#657159"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#selva)" d="M0 0h900v680H0z"/>
+  <circle cx="693" cy="152" r="89" fill="#d2c887" fill-opacity=".44"/>
+  <path d="M0 54c130 67 178 165 136 295m87-311c78 102 73 191-15 268m572-281c-92 114-94 213-8 298m98-251c-79 111-86 210-22 297" stroke="#1b2b21" stroke-width="22" stroke-linecap="round"/>
+  <path d="M0 447 124 343l123 79 93-107 105 93 141-131 132 142 88-64 94 70v255H0z" fill="#2b4d38"/>
+  <path d="M276 535V339c0-102 77-178 174-178s174 76 174 178v196h-61V340c0-67-49-119-113-119s-113 52-113 119v195z" fill="url(#arco)"/>
+  <path d="M334 534V340c0-68 49-119 116-119s116 51 116 119v194" stroke="#e1cf9e" stroke-opacity=".5" stroke-width="4"/>
+  <path d="M0 506c171 31 286 26 450-7s281-36 450-4v185H0z" fill="url(#agua)"/>
+  <path d="M0 555c170-23 303-16 450 8 156 26 291 29 450 2" stroke="#d7e2bb" stroke-opacity=".7" stroke-width="3"/>
+  <path d="M0 619c160-13 309-6 450 13 171 23 305 21 450-1" stroke="#b4d2b4" stroke-opacity=".42" stroke-width="2"/>
+  <g fill="#9bb77c">
+    <path d="M73 422c-56-77-50-130 21-159 25 61 19 114-21 159Zm68 16c-6-94 29-138 104-132 1 68-34 112-104 132Z"/>
+    <path d="M757 433c-22-86 2-139 75-158 18 66-7 119-75 158Zm-58 18c16-94-12-142-86-147-16 67 12 116 86 147Z"/>
+  </g>
+  <path d="M30 30h840v620H30z" stroke="#d7e2bb" stroke-opacity=".27" stroke-width="2"/>
+</svg>
