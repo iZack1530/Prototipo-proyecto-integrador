@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" fill="none">
+  <title>Liria, cartógrafa del viento</title>
+  <defs>
+    <linearGradient id="fondo" x1="89" y1="31" x2="796" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34493c"/>
+      <stop offset=".58" stop-color="#81846a"/>
+      <stop offset="1" stop-color="#c58e5e"/>
+    </linearGradient>
+    <linearGradient id="capa" x1="331" y1="268" x2="571" y2="602" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a8b291"/>
+      <stop offset="1" stop-color="#344f43"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#fondo)" d="M0 0h900v680H0z"/>
+  <circle cx="700" cy="173" r="93" fill="#eacb8d" fill-opacity=".78"/>
+  <path d="M0 438 157 319l109 90 134-156 122 131 111-95 139 104 128-61v348H0z" fill="#53664e"/>
+  <path d="m0 524 156-91 131 69 139-95 135 67 119-68 116 84 104-45v235H0z" fill="#324c3e"/>
+  <path d="m0 597 135-54 126 46 166-44 133 45 130-40 210 45v85H0z" fill="#1e352b"/>
+  <path d="M172 215c88-20 177-20 267 0m-249 24c82-14 156-13 223 3m-246 27c54-5 101-3 141 6" stroke="#eed9a8" stroke-opacity=".58" stroke-width="2" stroke-linecap="round"/>
+  <g transform="translate(317 221)">
+    <path d="M112 67c0-47 34-82 79-82s79 35 79 82v20H112z" fill="#202c25"/>
+    <path d="M134 72h112v113c0 34-25 60-56 60s-56-26-56-60z" fill="#c39a70"/>
+    <path d="M130 96c26 14 62 14 119 0" stroke="#6b4c39" stroke-width="5"/>
+    <path d="m133 220-75 211 110-49 82 49-46-211" fill="url(#capa)"/>
+    <path d="m146 241 47 127-34 35-40-26z" fill="#e3c991"/>
+    <path d="m59 411 209 0-22 39H44z" fill="#2c473a"/>
+    <path d="M68 335c-34-36-55-82-63-138 42 25 74 57 97 97m188-59c36-31 75-51 119-61-23 42-58 76-104 101" stroke="#e7d4a9" stroke-opacity=".72" stroke-width="3" stroke-linecap="round"/>
+    <path d="m152 145 33 11 31-11" stroke="#5b4435" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <path d="M30 30h840v620H30z" stroke="#f0ddba" stroke-opacity=".28" stroke-width="2"/>
+</svg>

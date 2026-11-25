@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" fill="none">
+  <title>Quetzalín, vigía celeste</title>
+  <defs>
+    <linearGradient id="cielo" x1="140" y1="35" x2="776" y2="674" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#263b39"/>
+      <stop offset=".62" stop-color="#547d79"/>
+      <stop offset="1" stop-color="#a8ad89"/>
+    </linearGradient>
+    <linearGradient id="ave" x1="335" y1="147" x2="639" y2="547" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d8e0b2"/>
+      <stop offset=".48" stop-color="#71aaa0"/>
+      <stop offset="1" stop-color="#315d58"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#cielo)" d="M0 0h900v680H0z"/>
+  <circle cx="608" cy="230" r="162" stroke="#e9d8a8" stroke-opacity=".34"/>
+  <circle cx="608" cy="230" r="187" stroke="#e9d8a8" stroke-opacity=".19"/>
+  <g fill="#e9e3cb" fill-opacity=".72">
+    <circle cx="190" cy="150" r="2"/><circle cx="293" cy="84" r="1.5"/><circle cx="757" cy="130" r="2"/>
+    <circle cx="726" cy="379" r="1.5"/><circle cx="121" cy="307" r="1.5"/>
+  </g>
+  <path fill="#79958a" d="m0 458 135-76 127 49 121-136 126 116 118-94 121 80 152-83v366H0z"/>
+  <path fill="#486d63" d="m0 545 156-78 133 65 127-77 115 56 128-81 135 94 106-59v215H0z"/>
+  <path fill="#28483f" d="m0 614 178-49 133 44 126-34 154 42 124-47 185 50v60H0z"/>
+  <g transform="translate(248 127)">
+    <path d="M230 208c74-31 125-82 153-154-7 92-41 164-102 216 55-5 106-25 153-61-28 87-84 138-169 153 38 19 80 24 126 14-50 59-112 79-187 58-48-13-83-37-104-72-43 27-85 37-127 30 39-41 62-83 70-128 7-41-2-75-28-102 66 8 110 35 132 81 18-57 13-118-16-184 63 40 95 89 99 149Z" fill="url(#ave)"/>
+    <path d="M144 224c-24-50-33-107-28-170 42 43 86 69 132 80m42 145c61-8 113-34 156-78" stroke="#e6e8ca" stroke-opacity=".78" stroke-width="4"/>
+    <path d="m226 195 17 11-18 12-14-10z" fill="#f3e5c4"/>
+    <path d="m240 292 22 86m-61-57-60 61m134-47 71 30" stroke="#28413a" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <path d="M30 30h840v620H30z" stroke="#d7ddbe" stroke-opacity=".32" stroke-width="2"/>
+</svg>
