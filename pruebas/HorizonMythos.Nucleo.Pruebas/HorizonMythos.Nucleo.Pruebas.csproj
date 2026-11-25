@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <None Update="casos_prueba.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="datos_prueba.json" CopyToOutputDirectory="PreserveNewest" />
     <Using Include="Xunit" />
   </ItemGroup>
 
