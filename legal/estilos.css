@@ -1,0 +1,58 @@
+.cabecera.legal-cabecera {
+  position: relative;
+  padding: 1.2rem max(6.7vw, calc((100vw - var(--ancho-contenido)) / 2));
+  background: var(--color-fondo);
+}
+.legal-cabecera .enlace-regreso { color: var(--color-acento-claro); font-size: 0.78rem; }
+.legal-contenido {
+  width: min(820px, calc(100% - 3rem));
+  min-height: 65vh;
+  margin: 0 auto;
+  padding: 5rem 0 7rem;
+}
+.legal-ruta {
+  margin-bottom: 1rem;
+  color: var(--color-acento);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+.legal-contenido h1 {
+  margin-bottom: 0.7rem;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  line-height: 1;
+}
+.legal-fecha { margin-bottom: 2rem; color: var(--color-texto-suave); font-size: 0.76rem; }
+.legal-aviso {
+  margin: 2rem 0;
+  padding: 1.2rem 1.4rem;
+  border-left: 2px solid var(--color-acento);
+  background: var(--color-fondo-suave);
+  color: var(--color-texto);
+  font-size: 0.84rem;
+}
+.legal-aviso strong { color: var(--color-acento-claro); }
+.legal-contenido h2 {
+  margin: 2.7rem 0 0.75rem;
+  color: var(--color-texto);
+  font-size: 1.65rem;
+  letter-spacing: -0.035em;
+}
+.legal-contenido h3 { margin: 1.6rem 0 0.5rem; color: var(--color-acento-claro); font-size: 1.15rem; }
+.legal-contenido p, .legal-contenido li { color: var(--color-texto-suave); font-size: 0.9rem; }
+.legal-contenido ul { padding-left: 1.3rem; }
+.legal-contenido li { padding-left: 0.25rem; margin-bottom: 0.45rem; }
+.legal-contenido a { color: var(--color-acento-claro); text-decoration: underline; text-decoration-color: rgba(235, 200, 142, 0.4); text-underline-offset: 0.2em; }
+.legal-contenido a:hover { text-decoration-color: currentColor; }
+.legal-enlaces { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--color-borde); }
+.legal-enlaces a { font-size: 0.78rem; }
+.legal-pie { justify-content: space-between; }
+
+@media (max-width: 620px) {
+  .cabecera.legal-cabecera { padding: 1rem 1.2rem; }
+  .legal-contenido { width: calc(100% - 2.4rem); padding: 3.5rem 0 5rem; }
+  .legal-contenido h1 { font-size: 3rem; }
+  .legal-aviso { padding: 1rem; }
+  .legal-pie { align-items: flex-start; }
+}
