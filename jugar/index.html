@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a17">
+  <meta name="description" content="Prepara tu equipo y juega un combate por turnos en Horizon Mythos.">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/tema.css">
+  <link rel="stylesheet" href="../assets/css/componentes.css">
+  <title>Jugar combate — Horizon Mythos</title>
+  <style>
+    .cabecera-juego { position: relative; }
+    .juego-portada, .editor-equipo, .arena { max-width: var(--ancho-contenido); margin: 0 auto; padding: 3.5rem 2rem; }
+    .juego-portada { display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; gap: 2rem; padding-top: 5rem; padding-bottom: 3rem; }
+    .juego-portada h1 { max-width: 720px; margin-bottom: 1rem; font-size: clamp(3.2rem, 7vw, 6rem); line-height: .96; }
+    .juego-portada h1 em { color: var(--color-acento); }
+    .juego-portada p:not(.sobretitulo) { max-width: 500px; margin: 0; color: var(--color-texto-suave); }
+    .juego-folio { justify-self: end; padding: 1rem 0 0 1.4rem; border-left: 1px solid var(--color-acento); color: var(--color-texto-suave); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; }
+    .juego-folio strong { display: block; margin-top: .5rem; color: var(--color-acento-claro); font-family: var(--fuente-titulos); font-size: 1.15rem; font-weight: 400; letter-spacing: 0; text-transform: none; }
+    .editor-equipo { padding-top: 2rem; }
+    .seccion-cabecera { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .seccion-cabecera h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); }
+    .seccion-cabecera p { margin: .4rem 0 0; color: var(--color-texto-suave); font-size: .82rem; }
+    .panel { padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--color-borde); background: linear-gradient(145deg, rgba(255,255,255,.025), transparent 60%), var(--color-fondo-suave); }
+    .equipo-cabecera { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(190px, .7fr); gap: 1rem; margin-bottom: 1.4rem; }
+    .campo { display: grid; gap: .45rem; }
+    .campo label, .rotulo { color: var(--color-texto-suave); font-size: .68rem; letter-spacing: .11em; text-transform: uppercase; }
+    .campo input, .campo select, .campo textarea, .acciones select, .texto-equipo { width: 100%; min-height: 2.8rem; padding: .7rem .8rem; border: 1px solid var(--color-borde); border-radius: 0; background: #111a17; color: var(--color-texto); font: inherit; font-size: .84rem; }
+    .equipo-selecciones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+    .equipo-slot { min-height: 105px; padding: 1rem; border: 1px solid var(--color-borde); background: rgba(17,26,23,.55); }
+    .equipo-slot span { display: block; margin-bottom: .6rem; color: var(--color-acento); font-size: .62rem; letter-spacing: .14em; }
+    .equipo-slot select { width: 100%; min-height: 2.5rem; border: 0; border-bottom: 1px solid var(--color-borde); background: transparent; color: var(--color-texto); font: inherit; font-size: .8rem; }
+    .herramientas-equipo { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; margin-top: 1rem; }
+    .herramientas-equipo select { min-width: 190px; min-height: 2.8rem; padding: .55rem .7rem; border: 1px solid var(--color-borde); background: #111a17; color: var(--color-texto); font: inherit; font-size: .78rem; }
+    .accion-boton { min-height: 2.8rem; padding: .65rem .9rem; border: 1px solid var(--color-borde); background: transparent; color: var(--color-texto); font: inherit; font-size: .75rem; cursor: pointer; transition: background 160ms ease, border-color 160ms ease, color 160ms ease; }
+    .accion-boton:hover:not(:disabled) { border-color: var(--color-acento); color: var(--color-acento-claro); }
+    .accion-boton:disabled { cursor: not-allowed; opacity: .48; }
+    .accion-principal { border-color: var(--color-acento); background: var(--color-acento); color: #172019; font-weight: 700; }
+    .accion-principal:hover:not(:disabled) { background: var(--color-acento-claro); color: #172019; }
+    .texto-equipo { min-height: 115px; margin-top: .9rem; resize: vertical; font-family: ui-monospace, Consolas, monospace; font-size: .75rem; }
+    .estado-texto { min-height: 1.5rem; margin: .8rem 0 0; color: var(--color-texto-suave); font-size: .78rem; }
+    .estado-texto[data-tipo="error"] { color: #ef9d88; }
+    .estado-texto[data-tipo="correcto"] { color: var(--color-acento-claro); }
+    .boton-iniciar-wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-borde); }
+    .boton-iniciar-wrap p { margin: 0; color: var(--color-texto-suave); font-size: .75rem; }
+    .arena { max-width: none; margin-top: 1rem; padding-right: max(2rem, calc((100vw - var(--ancho-contenido)) / 2)); padding-left: max(2rem, calc((100vw - var(--ancho-contenido)) / 2)); border-top: 1px solid var(--color-borde); background: radial-gradient(ellipse at 50% 20%, rgba(215,168,95,.07), transparent 45%), #131d18; }
+    .arena[hidden], [hidden] { display: none !important; }
+    .arena-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .arena-cabecera h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); }
+    .arena-meta { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; }
+    .modo-etiqueta, .turno-etiqueta { padding: .4rem .65rem; border: 1px solid var(--color-borde); color: var(--color-texto-suave); font-size: .62rem; letter-spacing: .12em; }
+    #estado-conexion[data-modo="simulado"] .modo-etiqueta { border-color: rgba(215,168,95,.55); color: var(--color-acento-claro); }
+    #estado-conexion[data-modo="en-linea"] .modo-etiqueta { border-color: rgba(115,183,137,.6); color: #a9d8b8; }
+    #estado-conexion[data-modo="error"] .modo-etiqueta { border-color: rgba(239,157,136,.6); color: #ef9d88; }
+    .detalle-modo { margin: -.9rem 0 1rem; color: var(--color-texto-suave); font-size: .75rem; }
+    .resultado-combate { min-height: 1.6rem; margin: 0 0 1rem; color: var(--color-acento-claro); font-family: var(--fuente-titulos); font-size: 1.5rem; }
+    .bandos { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .bando { min-width: 0; padding: 1rem; border: 1px solid var(--color-borde); background: rgba(24,35,30,.8); }
+    .bando-cabecera { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; margin-bottom: .8rem; }
+    .bando-cabecera h3 { margin: 0; font-size: 1.35rem; }
+    .bando-cabecera span { color: var(--color-texto-suave); font-size: .62rem; letter-spacing: .14em; }
+    .lista-unidades { display: grid; gap: .55rem; }
+    .unidad { padding: .75rem; border: 1px solid transparent; background: rgba(17,26,23,.72); }
+    .unidad-activa { border-color: rgba(215,168,95,.5); }
+    .unidad-ko { opacity: .52; }
+    .unidad-cabecera { display: flex; align-items: center; gap: .55rem; }
+    .unidad-cabecera strong { overflow: hidden; font-family: var(--fuente-titulos); font-size: 1.08rem; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; }
+    .unidad-numero { color: var(--color-acento); font-size: .57rem; letter-spacing: .12em; }
+    .unidad-sello { margin-left: auto; color: var(--color-acento-claro); font-size: .52rem; letter-spacing: .1em; }
+    .unidad-tipos, .unidad-vida { margin: .25rem 0 0; color: var(--color-texto-suave); font-size: .65rem; }
+    .barra-vida { display: block; width: 100%; height: .35rem; margin-top: .55rem; accent-color: var(--color-acento); }
+    .campo-batalla { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; margin: 1rem 0; padding: 1rem; border-top: 1px solid var(--color-borde); border-bottom: 1px solid var(--color-borde); color: var(--color-texto-suave); text-align: center; }
+    .campo-batalla strong { color: var(--color-acento); font-family: var(--fuente-titulos); font-size: 1.8rem; font-weight: 400; }
+    .acciones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+    .accion-panel { display: grid; align-content: start; gap: .6rem; padding: 1rem; border: 1px solid var(--color-borde); background: var(--color-fondo-suave); }
+    .accion-panel h3 { margin: 0; font-family: var(--fuente-titulos); font-size: 1.2rem; font-weight: 400; }
+    .accion-panel p { margin: 0; color: var(--color-texto-suave); font-size: .7rem; }
+    .accion-panel select { min-height: 2.5rem; font-size: .75rem; }
+    .registro-panel { margin-top: 1rem; border: 1px solid var(--color-borde); background: #111a17; }
+    .registro-cabecera { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 1rem; border-bottom: 1px solid var(--color-borde); color: var(--color-texto-suave); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+    .registro-combate { display: grid; max-height: 210px; gap: .5rem; overflow: auto; margin: 0; padding: 1rem 1rem 1rem 2.6rem; color: var(--color-texto-suave); font-size: .76rem; }
+    .registro-da-o, .registro-ko, .registro-fin { color: var(--color-acento-claro); }
+    .pie-juego { margin-top: 2rem; }
+    @media (max-width: 760px) {
+      .juego-portada { grid-template-columns: 1fr; padding-top: 3.5rem; }
+      .juego-folio { justify-self: start; }
+      .equipo-selecciones { grid-template-columns: 1fr; }
+      .equipo-slot { min-height: auto; }
+      .acciones { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .juego-portada, .editor-equipo { padding-right: 1.2rem; padding-left: 1.2rem; }
+      .juego-portada h1 { font-size: clamp(3rem, 15vw, 4.5rem); }
+      .equipo-cabecera { grid-template-columns: 1fr; }
+      .seccion-cabecera, .arena-cabecera { align-items: start; flex-direction: column; }
+      .boton-iniciar-wrap { align-items: stretch; flex-direction: column; }
+      .arena { padding-right: 1.2rem; padding-left: 1.2rem; }
+      .bandos { grid-template-columns: 1fr; }
+      .campo-batalla { grid-template-columns: 1fr; gap: .3rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+  <header class="cabecera cabecera-juego">
+    <a class="marca" href="../index.html" aria-label="Horizon Mythos, inicio">
+      <span class="marca-simbolo" aria-hidden="true">H</span>
+      <span class="marca-texto">Horizon <span>Mythos</span></span>
+    </a>
+    <nav class="navegacion" aria-label="Navegación principal">
+      <a href="../index.html">Inicio</a>
+      <a href="../bestiario/">Bestiario</a>
+      <a href="../galeria/">Galería</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="juego-portada" aria-labelledby="titulo-juego">
+      <div>
+        <p class="sobretitulo">Combate por turnos · Auralia</p>
+        <h1 id="titulo-juego">Elige tu equipo.<br><em>Escribe el encuentro.</em></h1>
+        <p>Prepara tres criaturas, decide cada acción y sigue los eventos que devuelve el combate.</p>
+      </div>
+      <p class="juego-folio">Protocolo de combate<strong>Acciones del cliente · eventos del servidor</strong></p>
+    </section>
+
+    <section class="editor-equipo" aria-labelledby="titulo-equipo">
+      <div class="seccion-cabecera">
+        <div>
+          <p class="sobretitulo">Antes del encuentro</p>
+          <h2 id="titulo-equipo">Forma tu equipo</h2>
+          <p>Elige tres criaturas distintas del catálogo público.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="equipo-cabecera">
+          <div class="campo">
+            <label for="nombre-equipo">Nombre del equipo</label>
+            <input id="nombre-equipo" maxlength="40" value="Centinelas de Auralia">
+          </div>
+          <div class="campo">
+            <label for="equipos-guardados">Equipo guardado</label>
+            <select id="equipos-guardados"><option value="">Equipos guardados</option></select>
+          </div>
+        </div>
+
+        <div class="equipo-selecciones" aria-label="Criaturas del equipo">
+          <div class="equipo-slot"><span>01 · VANGUARDIA</span><select id="criatura-1" aria-label="Primera criatura"></select></div>
+          <div class="equipo-slot"><span>02 · FLANCO</span><select id="criatura-2" aria-label="Segunda criatura"></select></div>
+          <div class="equipo-slot"><span>03 · RETAGUARDIA</span><select id="criatura-3" aria-label="Tercera criatura"></select></div>
+        </div>
+
+        <div class="herramientas-equipo">
+          <button type="button" class="accion-boton accion-principal" id="guardar-equipo">Guardar equipo</button>
+          <button type="button" class="accion-boton" id="exportar-equipo">Exportar a texto</button>
+          <button type="button" class="accion-boton" id="copiar-equipo">Copiar texto</button>
+          <button type="button" class="accion-boton" id="importar-equipo">Importar texto</button>
+        </div>
+        <label class="rotulo" for="texto-equipo">Intercambia el equipo como JSON de texto</label>
+        <textarea class="texto-equipo" id="texto-equipo" spellcheck="false" placeholder="Pulsa «Exportar a texto» o pega aquí un equipo exportado."></textarea>
+        <p class="estado-texto" id="estado-equipo" role="status" aria-live="polite"></p>
+
+        <div class="boton-iniciar-wrap">
+          <p>Si el servidor no responde, el encuentro cambia al modo simulado.</p>
+          <button type="button" class="accion-boton accion-principal" id="iniciar-combate" disabled>Iniciar combate</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="arena" id="panel-combate" aria-labelledby="titulo-arena" hidden>
+      <div class="arena-cabecera">
+        <div>
+          <p class="sobretitulo">La arena está lista</p>
+          <h2 id="titulo-arena" tabindex="-1">Combate</h2>
+        </div>
+        <div class="arena-meta" id="estado-conexion" data-modo="inactivo">
+          <span class="modo-etiqueta" id="etiqueta-modo">LISTO</span>
+          <span class="turno-etiqueta" id="numero-turno">TURNO 01</span>
+          <span class="turno-etiqueta" id="temporizador-turno" aria-label="Tiempo restante del turno">00:30</span>
+        </div>
+      </div>
+      <p class="detalle-modo" id="detalle-modo" role="status" aria-live="polite"></p>
+      <p class="resultado-combate" id="resultado-combate" aria-live="assertive"></p>
+
+      <div class="bandos">
+        <section class="bando" aria-labelledby="nombre-jugador">
+          <div class="bando-cabecera"><h3 id="nombre-jugador">Tu equipo</h3><span>JUGADOR</span></div>
+          <div class="lista-unidades" id="equipo-jugador"></div>
+        </section>
+        <section class="bando" aria-labelledby="nombre-rival">
+          <div class="bando-cabecera"><h3 id="nombre-rival">Rival</h3><span>OPONENTE</span></div>
+          <div class="lista-unidades" id="equipo-rival"></div>
+        </section>
+      </div>
+
+      <div class="campo-batalla" aria-hidden="true">
+        <span>El campo escucha cada orden</span><strong>✳</strong><span>El servidor narra cada consecuencia</span>
+      </div>
+
+      <section class="acciones" aria-label="Acciones de combate">
+        <div class="accion-panel">
+          <h3>Atacar</h3>
+          <p id="ataque-actual">Selecciona un movimiento.</p>
+          <label class="rotulo" for="movimiento-elegido">Movimiento</label>
+          <select id="movimiento-elegido" aria-label="Movimiento para atacar"></select>
+          <button type="button" class="accion-boton accion-principal" id="accion-atacar" disabled>Enviar ataque</button>
+        </div>
+        <div class="accion-panel">
+          <h3>Cambiar</h3>
+          <p>Envía una orden para relevar a la criatura activa.</p>
+          <label class="rotulo" for="criatura-a-cambiar">Criatura de reserva</label>
+          <select id="criatura-a-cambiar" aria-label="Criatura a cambiar"></select>
+          <button type="button" class="accion-boton" id="accion-cambiar" disabled>Cambiar criatura</button>
+        </div>
+        <div class="accion-panel">
+          <h3>Usar objeto</h3>
+          <p>El servidor responde con el resultado del objeto.</p>
+          <label class="rotulo" for="objeto-elegido">Objeto</label>
+          <select id="objeto-elegido" aria-label="Objeto para usar"></select>
+          <button type="button" class="accion-boton" id="accion-objeto" disabled>Enviar objeto</button>
+        </div>
+      </section>
+
+      <section class="registro-panel" aria-labelledby="titulo-registro">
+        <div class="registro-cabecera"><span id="titulo-registro">Registro de eventos</span><span>Solo eventos recibidos</span></div>
+        <ol class="registro-combate" id="registro-combate" aria-live="polite" aria-relevant="additions"></ol>
+      </section>
+      <div class="boton-iniciar-wrap">
+        <p>Las acciones se envían al servidor; esta pantalla solo representa sus eventos.</p>
+        <button type="button" class="accion-boton" id="repetir-combate" hidden>Jugar otra vez</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie pie-juego">
+    <a class="marca marca-pie" href="../index.html"><span class="marca-simbolo" aria-hidden="true">H</span><span class="marca-texto">Horizon <span>Mythos</span></span></a>
+    <p>Un horizonte nuevo en cada encuentro.</p>
+    <a href="../laboratorio/">Laboratorio <span aria-hidden="true">↗</span></a>
+  </footer>
+
+  <script type="module" src="../assets/js/combate/escena.js"></script>
+</body>
+</html>
