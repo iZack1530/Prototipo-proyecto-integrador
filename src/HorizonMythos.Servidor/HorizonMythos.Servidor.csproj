@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>HorizonMythos.Servidor</RootNamespace>
+    <AssemblyName>HorizonMythos.Servidor</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HorizonMythos.Nucleo\HorizonMythos.Nucleo.csproj" />
+  </ItemGroup>
+
+</Project>
